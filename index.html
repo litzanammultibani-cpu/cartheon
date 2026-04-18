@@ -125,6 +125,7 @@
                 <a href="#home" aria-label="CARTHEON home"><img src="logo.svg" alt="CARTHEON" height="32"></a>
             </div>
             <div class="nav-right">
+                <a href="wishlist.html" aria-label="Wishlist">WISHLIST <span data-wishlist-count style="display:none;font-variant-numeric:tabular-nums;"></span></a>
                 <a href="#" id="nav-search" aria-label="Search">SEARCH</a>
                 <a href="#" id="nav-account" aria-label="Account">ACCOUNT</a>
                 <a href="#" id="nav-bag" aria-label="Shopping bag">BAG (<span id="bag-count">0</span>)</a>
@@ -278,6 +279,15 @@
         </div>
     </section>
 
+    <!-- Recently viewed (hidden if empty) -->
+    <section class="recently-viewed" id="recently-viewed" style="display:none;">
+        <div class="rv-header">
+            <div class="label">Pick up where you left off</div>
+            <h2>Recently viewed</h2>
+        </div>
+        <div class="rv-grid" id="recently-viewed-grid"></div>
+    </section>
+
     <!-- About / Story -->
     <section class="about" id="about" aria-labelledby="about-title">
         <div class="about-container">
@@ -428,6 +438,7 @@
 
     <script src="script.js" defer></script>
     <script src="cookie-banner.js" defer></script>
+    <script src="products.js"></script>
     <script src="theme.js" defer></script>
     <script src="auth-shared.js" defer></script>
 </body>

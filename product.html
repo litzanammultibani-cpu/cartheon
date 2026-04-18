@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CARTHEON — Product</title>
+    <meta name="description" content="A CARTHEON piece — fine 925 sterling silver, hand-finished in Strasbourg.">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="cookie-banner.css">
+    <script id="theme-early-apply">(function(){try{var t=localStorage.getItem("cartheon_theme");if(t!=="dark"&&t!=="light"){t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";}document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+    <style>
+        /* Product detail page styles */
+        .pdp-wrap { max-width: 1200px; margin: 40px auto 80px; padding: 0 24px; }
+        .pdp-crumb {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: #888;
+            margin-bottom: 32px;
+        }
+        .pdp-crumb a { color: inherit; text-decoration: none; }
+        .pdp-crumb a:hover { color: #0a0a0a; }
+        html[data-theme="dark"] .pdp-crumb a:hover { color: #fff; }
+
+        .pdp-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+        @media (max-width: 860px) { .pdp-grid { grid-template-columns: 1fr; gap: 30px; } }
+
+        .pdp-image {
+            width: 100%;
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            color: rgba(0,0,0,0.18);
+            position: relative;
+            overflow: hidden;
+        }
+        html[data-theme="dark"] .pdp-image { color: rgba(255,255,255,0.12); }
+        .pdp-image .badge {
+            position: absolute;
+            top: 18px;
+            left: 18px;
+            background: #0a0a0a;
+            color: #fafaf7;
+            font-size: 0.66rem;
+            letter-spacing: 0.22em;
+            padding: 5px 10px;
+            text-transform: uppercase;
+        }
+        html[data-theme="dark"] .pdp-image .badge { background: #e7e5df; color: #0a0a0a; }
+
+        .pdp-heart {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.9);
+            border: 1px solid transparent;
+            cursor: pointer;
+            font-size: 1.2rem;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.18s, transform 0.18s;
+        }
+        .pdp-heart:hover { transform: scale(1.08); }
+        .pdp-heart.is-active { color: #b4261a; }
+        html[data-theme="dark"] .pdp-heart { background: rgba(23,23,26,0.9); color: #e7e5df; }
+        html[data-theme="dark"] .pdp-heart.is-active { color: #ff6b5f; }
+
+        .pdp-info h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(2rem, 3vw, 2.8rem);
+            letter-spacing: 0.04em;
+            margin: 0 0 10px;
+            color: #0a0a0a;
+        }
+        html[data-theme="dark"] .pdp-info h1 { color: #fafaf7; }
+        .pdp-info .category {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: #888;
+            margin-bottom: 22px;
+        }
+        .pdp-info .price {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: 1.7rem;
+            font-variant-numeric: tabular-nums;
+            margin-bottom: 30px;
+            color: #0a0a0a;
+        }
+        html[data-theme="dark"] .pdp-info .price { color: #fafaf7; }
+        .pdp-info .description {
+            color: #444;
+            line-height: 1.7;
+            margin-bottom: 32px;
+            max-width: 50ch;
+        }
+        html[data-theme="dark"] .pdp-info .description { color: #cbc9c2; }
+
+        .pdp-details {
+            border-top: 1px solid #ece9e0;
+            border-bottom: 1px solid #ece9e0;
+            padding: 18px 0;
+            margin-bottom: 30px;
+        }
+        html[data-theme="dark"] .pdp-details { border-color: #2a2824; }
+        .pdp-details h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: #666;
+            margin: 0 0 12px;
+            font-weight: 500;
+        }
+        html[data-theme="dark"] .pdp-details h3 { color: #9c9a93; }
+        .pdp-details dl { display: grid; grid-template-columns: 120px 1fr; gap: 6px 20px; margin: 0; }
+        .pdp-details dt { font-size: 0.78rem; color: #888; text-transform: capitalize; }
+        .pdp-details dd { font-size: 0.88rem; margin: 0; color: #222; }
+        html[data-theme="dark"] .pdp-details dd { color: #e7e5df; }
+
+        .pdp-actions { display: flex; gap: 12px; align-items: stretch; margin-bottom: 24px; }
+        .pdp-qty {
+            display: flex;
+            align-items: center;
+            border: 1px solid #d7d3ca;
+            background: #fff;
+        }
+        html[data-theme="dark"] .pdp-qty { background: #17171a; border-color: #2a2824; }
+        .pdp-qty button {
+            width: 40px; height: 52px;
+            background: transparent;
+            border: none;
+            color: inherit;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        .pdp-qty input {
+            width: 48px; height: 52px;
+            text-align: center;
+            border: none;
+            background: transparent;
+            color: inherit;
+            font-family: inherit;
+            font-variant-numeric: tabular-nums;
+        }
+        .pdp-add {
+            flex: 1;
+            padding: 16px 24px;
+            background: #0a0a0a;
+            color: #fafaf7;
+            border: 1px solid #0a0a0a;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.78rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .pdp-add:hover { background: #333; }
+        html[data-theme="dark"] .pdp-add { background: #e7e5df; color: #0a0a0a; border-color: #e7e5df; }
+        html[data-theme="dark"] .pdp-add:hover { background: #fff; }
+        .pdp-add.added { background: #6aa87a; border-color: #6aa87a; color: #fff; }
+
+        .pdp-promise { font-size: 0.8rem; color: #666; line-height: 1.6; }
+        html[data-theme="dark"] .pdp-promise { color: #9c9a93; }
+        .pdp-promise span { display: block; margin-bottom: 4px; }
+
+        /* Related / Recent sections */
+        .pdp-strip { margin-top: 80px; }
+        .pdp-strip h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: 1.7rem;
+            text-align: center;
+            letter-spacing: 0.06em;
+            margin-bottom: 8px;
+            color: #0a0a0a;
+        }
+        html[data-theme="dark"] .pdp-strip h2 { color: #fafaf7; }
+        .pdp-strip .label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.68rem;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: #888;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .pdp-strip-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .pdp-strip-card {
+            background: #fff;
+            border: 1px solid #ece9e0;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        html[data-theme="dark"] .pdp-strip-card { background: #17171a; border-color: #2a2824; }
+        .pdp-strip-card:hover { transform: translateY(-3px); box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+        .pdp-strip-card .thumb {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            color: rgba(0,0,0,0.18);
+        }
+        html[data-theme="dark"] .pdp-strip-card .thumb { color: rgba(255,255,255,0.12); }
+        .pdp-strip-card .meta { padding: 14px 16px 18px; }
+        .pdp-strip-card h4 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 1.05rem; margin: 0 0 4px; }
+        .pdp-strip-card .cat { font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: #888; margin-bottom: 4px; }
+        .pdp-strip-card .price { font-family: 'Cormorant Garamond', serif; font-variant-numeric: tabular-nums; font-size: 0.95rem; }
+
+        /* Not-found state */
+        .pdp-notfound {
+            text-align: center;
+            padding: 100px 20px;
+        }
+        .pdp-notfound h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: 2.2rem;
+            margin-bottom: 14px;
+        }
+        .pdp-notfound p { color: #888; margin-bottom: 24px; }
+        .pdp-notfound a {
+            display: inline-block;
+            padding: 14px 28px;
+            background: #0a0a0a;
+            color: #fafaf7;
+            text-decoration: none;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+        html[data-theme="dark"] .pdp-notfound a { background: #e7e5df; color: #0a0a0a; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="index.html#shop">SHOP</a>
+                <a href="index.html#collections">COLLECTIONS</a>
+                <a href="index.html#about">ABOUT</a>
+            </div>
+            <div class="nav-logo">
+                <a href="index.html"><img src="logo.svg" alt="CARTHEON" height="32"></a>
+            </div>
+            <div class="nav-right">
+                <a href="wishlist.html" aria-label="Wishlist">WISHLIST <span data-wishlist-count style="display:none;font-variant-numeric:tabular-nums;"></span></a>
+                <a href="#" id="nav-account" aria-label="Account">ACCOUNT</a>
+                <a href="index.html#cart-drawer" id="nav-bag" aria-label="Shopping bag">BAG</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pdp-wrap" id="pdp-root">
+        <!-- Filled in by JS -->
+        <p class="pdp-crumb"><a href="index.html">Home</a> / <a href="index.html#shop">Shop</a> / <span id="pdp-bc-name">…</span></p>
+        <div id="pdp-body">
+            <p style="text-align:center;padding:80px 20px;color:#888;">Loading…</p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 CARTHEON · Strasbourg, France · All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="products.js"></script>
+    <script>
+    (function () {
+        'use strict';
+
+        const CP = window.CartheonProducts;
+        if (!CP) return;
+
+        const root = document.getElementById('pdp-body');
+        const bcName = document.getElementById('pdp-bc-name');
+
+        const url = new URL(window.location.href);
+        const id = url.searchParams.get('id');
+        const product = id && CP.getProduct(id);
+
+        if (!product) {
+            bcName.textContent = 'Not found';
+            root.innerHTML = `
+                <div class="pdp-notfound">
+                    <h1>Piece not found</h1>
+                    <p>That product doesn't exist or has moved.</p>
+                    <a href="index.html#shop">Browse the collection</a>
+                </div>`;
+            return;
+        }
+
+        // Mark as viewed
+        CP.markViewed(product.id);
+
+        // Update tab title + meta
+        document.title = `CARTHEON — ${product.name}`;
+        bcName.textContent = product.name;
+
+        const det = product.details || {};
+        const detailRows = Object.entries(det).map(([k, v]) =>
+            `<dt>${escapeHtml(k)}</dt><dd>${escapeHtml(v)}</dd>`
+        ).join('');
+
+        const wished = CP.isWishlisted(product.id);
+        const bgStyle = product.image
+            ? `background: url("${encodeURI(product.image)}") center/cover no-repeat;`
+            : (product.gradient ? `background: ${product.gradient};` : 'background: #eee;');
+
+        root.innerHTML = `
+            <div class="pdp-grid">
+                <div class="pdp-image" style="${bgStyle}">
+                    ${!product.image ? `<span>${escapeHtml(product.symbol || '◯')}</span>` : ''}
+                    ${product.badge ? `<span class="badge">${escapeHtml(product.badge)}</span>` : ''}
+                    <button class="pdp-heart ${wished ? 'is-active' : ''}" id="pdp-heart" aria-label="${wished ? 'Remove from wishlist' : 'Add to wishlist'}" title="${wished ? 'In your wishlist' : 'Add to wishlist'}">
+                        ${wished ? '♥' : '♡'}
+                    </button>
+                </div>
+
+                <div class="pdp-info">
+                    <div class="category">${escapeHtml(product.category || '')}</div>
+                    <h1>${escapeHtml(product.name)}</h1>
+                    <div class="price">€${Number(product.price).toFixed(2)}</div>
+                    <p class="description">${escapeHtml(product.description || '')}</p>
+
+                    ${detailRows ? `
+                    <div class="pdp-details">
+                        <h3>Details</h3>
+                        <dl>${detailRows}</dl>
+                    </div>` : ''}
+
+                    <div class="pdp-actions">
+                        <div class="pdp-qty">
+                            <button type="button" data-qty="-1" aria-label="Decrease">−</button>
+                            <input type="number" id="pdp-qty" value="1" min="1" max="20" inputmode="numeric">
+                            <button type="button" data-qty="+1" aria-label="Increase">+</button>
+                        </div>
+                        <button type="button" class="pdp-add" id="pdp-add">ADD TO BAG</button>
+                    </div>
+
+                    <div class="pdp-promise">
+                        <span>✓ Free shipping on orders over €50</span>
+                        <span>✓ 14-day returns · 1-year craftsmanship warranty</span>
+                        <span>✓ Ships gift-ready in a CARTHEON pouch</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Related -->
+            <section class="pdp-strip" id="pdp-related-strip"></section>
+
+            <!-- Recently viewed -->
+            <section class="pdp-strip" id="pdp-recent-strip"></section>
+        `;
+
+        // Wire qty buttons
+        const qtyInput = document.getElementById('pdp-qty');
+        root.querySelectorAll('[data-qty]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const delta = parseInt(btn.dataset.qty, 10);
+                const next = Math.max(1, Math.min(20, (parseInt(qtyInput.value, 10) || 1) + delta));
+                qtyInput.value = next;
+            });
+        });
+
+        // Heart
+        document.getElementById('pdp-heart').addEventListener('click', (e) => {
+            CP.toggleWishlist(product.id);
+            const now = CP.isWishlisted(product.id);
+            e.currentTarget.classList.toggle('is-active', now);
+            e.currentTarget.innerHTML = now ? '♥' : '♡';
+            e.currentTarget.setAttribute('aria-label', now ? 'Remove from wishlist' : 'Add to wishlist');
+            e.currentTarget.setAttribute('title', now ? 'In your wishlist' : 'Add to wishlist');
+        });
+
+        // Add to bag — reads same cart shape as script.js
+        document.getElementById('pdp-add').addEventListener('click', () => {
+            const qty = Math.max(1, parseInt(qtyInput.value, 10) || 1);
+            let cart = [];
+            try { cart = JSON.parse(localStorage.getItem('cartheon_cart')) || []; } catch (e) {}
+            const existing = cart.find(i => i.id === product.id);
+            if (existing) {
+                existing.qty = Math.min(99, (existing.qty || 1) + qty);
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: Number(product.price),
+                    category: product.category || '',
+                    placeholder: product.symbol || '◯',
+                    imageStyle: product.gradient ? `background: ${product.gradient};` : '',
+                    qty: qty
+                });
+            }
+            localStorage.setItem('cartheon_cart', JSON.stringify(cart));
+            const btn = document.getElementById('pdp-add');
+            btn.textContent = '✓ ADDED TO BAG';
+            btn.classList.add('added');
+            setTimeout(() => { btn.textContent = 'ADD TO BAG'; btn.classList.remove('added'); }, 1500);
+            // Nudge the nav bag count if it exists
+            const bagCount = document.getElementById('bag-count');
+            if (bagCount) bagCount.textContent = cart.reduce((s, i) => s + (i.qty || 0), 0);
+        });
+
+        // Related
+        const related = CP.getRelated(product.id, 3);
+        renderStrip('pdp-related-strip', 'You may also like', 'Pieces from the same house', related);
+
+        // Recently viewed (exclude current + related)
+        const relIds = new Set(related.map(p => p.id));
+        relIds.add(product.id);
+        const recent = CP.recentlyViewed(product.id).filter(p => !relIds.has(p.id)).slice(0, 3);
+        renderStrip('pdp-recent-strip', 'Recently viewed', 'Pick up where you left off', recent);
+
+        function renderStrip(containerId, title, label, items) {
+            const el = document.getElementById(containerId);
+            if (!el || !items.length) { if (el) el.remove(); return; }
+            el.innerHTML = `
+                <p class="label">${escapeHtml(label)}</p>
+                <h2>${escapeHtml(title)}</h2>
+                <div class="pdp-strip-grid">
+                    ${items.map(p => `
+                        <a class="pdp-strip-card" href="product.html?id=${encodeURIComponent(p.id)}">
+                            <div class="thumb" style="${p.image ? `background: url('${encodeURI(p.image)}') center/cover no-repeat;` : (p.gradient ? 'background:'+p.gradient+';' : '')}">
+                                ${!p.image ? `<span>${escapeHtml(p.symbol || '◯')}</span>` : ''}
+                            </div>
+                            <div class="meta">
+                                <div class="cat">${escapeHtml(p.category || '')}</div>
+                                <h4>${escapeHtml(p.name)}</h4>
+                                <div class="price">€${Number(p.price).toFixed(2)}</div>
+                            </div>
+                        </a>`).join('')}
+                </div>`;
+        }
+
+        function escapeHtml(s) {
+            return String(s == null ? '' : s).replace(/[&<>"']/g, c =>
+                ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' })[c]
+            );
+        }
+    })();
+    </script>
+
+    <!-- Shared scripts -->
+    <script src="theme.js" defer></script>
+    <script src="auth-shared.js" defer></script>
+    <script src="cookie-banner.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CARTHEON — Wishlist</title>
+    <meta name="description" content="Your saved CARTHEON pieces. All in one place, ready when you are.">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="cookie-banner.css">
+    <script id="theme-early-apply">(function(){try{var t=localStorage.getItem("cartheon_theme");if(t!=="dark"&&t!=="light"){t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";}document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+    <style>
+        .wl-wrap { max-width: 1200px; margin: 40px auto 100px; padding: 0 24px; }
+        .wl-header { text-align: center; margin-bottom: 48px; }
+        .wl-header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(2rem, 4vw, 3rem);
+            letter-spacing: 0.06em;
+            margin: 0 0 8px;
+            color: #0a0a0a;
+        }
+        html[data-theme="dark"] .wl-header h1 { color: #fafaf7; }
+        .wl-header p { color: #888; font-size: 0.9rem; }
+
+        .wl-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+        .wl-card {
+            background: #fff;
+            border: 1px solid #ece9e0;
+            position: relative;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        html[data-theme="dark"] .wl-card { background: #17171a; border-color: #2a2824; }
+        .wl-card:hover { transform: translateY(-3px); box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+        .wl-card a {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+        .wl-card .thumb {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: rgba(0,0,0,0.15);
+        }
+        html[data-theme="dark"] .wl-card .thumb { color: rgba(255,255,255,0.12); }
+        .wl-card .meta {
+            padding: 16px 18px;
+            border-top: 1px solid #ece9e0;
+        }
+        html[data-theme="dark"] .wl-card .meta { border-top-color: #2a2824; }
+        .wl-card .cat { font-size: 0.66rem; letter-spacing: 0.22em; text-transform: uppercase; color: #888; margin-bottom: 4px; }
+        .wl-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: 1.15rem;
+            margin: 0 0 4px;
+            color: #0a0a0a;
+        }
+        html[data-theme="dark"] .wl-card h4 { color: #fafaf7; }
+        .wl-card .price {
+            font-family: 'Cormorant Garamond', serif;
+            font-variant-numeric: tabular-nums;
+            font-size: 1rem;
+        }
+        .wl-actions {
+            display: flex;
+            gap: 8px;
+            padding: 0 18px 18px;
+        }
+        .wl-actions button {
+            flex: 1;
+            padding: 10px 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            cursor: pointer;
+            background: #0a0a0a;
+            color: #fafaf7;
+            border: 1px solid #0a0a0a;
+            transition: background 0.18s;
+        }
+        .wl-actions button.secondary {
+            background: transparent;
+            color: #0a0a0a;
+            border-color: #d7d3ca;
+        }
+        html[data-theme="dark"] .wl-actions button { background: #e7e5df; color: #0a0a0a; border-color: #e7e5df; }
+        html[data-theme="dark"] .wl-actions button.secondary { background: transparent; color: #e7e5df; border-color: #2a2824; }
+        .wl-actions button:hover { background: #333; }
+        html[data-theme="dark"] .wl-actions button:hover { background: #fff; }
+        .wl-actions button.secondary:hover { background: #f4f1ea; }
+        html[data-theme="dark"] .wl-actions button.secondary:hover { background: #1f1e22; }
+
+        .wl-empty {
+            text-align: center;
+            padding: 80px 24px;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+        .wl-empty .icon {
+            font-size: 3.5rem;
+            color: #c8c8c8;
+            margin-bottom: 18px;
+        }
+        .wl-empty h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: 1.7rem;
+            margin-bottom: 12px;
+            color: #0a0a0a;
+        }
+        html[data-theme="dark"] .wl-empty h2 { color: #fafaf7; }
+        .wl-empty p { color: #888; margin-bottom: 28px; }
+        .wl-empty a {
+            display: inline-block;
+            padding: 14px 30px;
+            background: #0a0a0a;
+            color: #fafaf7;
+            text-decoration: none;
+            font-size: 0.78rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+        }
+        html[data-theme="dark"] .wl-empty a { background: #e7e5df; color: #0a0a0a; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="index.html#shop">SHOP</a>
+                <a href="index.html#collections">COLLECTIONS</a>
+                <a href="index.html#about">ABOUT</a>
+            </div>
+            <div class="nav-logo">
+                <a href="index.html"><img src="logo.svg" alt="CARTHEON" height="32"></a>
+            </div>
+            <div class="nav-right">
+                <a href="wishlist.html" aria-label="Wishlist">WISHLIST <span data-wishlist-count style="display:none;font-variant-numeric:tabular-nums;"></span></a>
+                <a href="account.html" aria-label="Account">ACCOUNT</a>
+                <a href="index.html#cart-drawer" aria-label="Shopping bag">BAG</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="wl-wrap">
+        <div class="wl-header">
+            <h1>Your wishlist</h1>
+            <p id="wl-count">Saved pieces, ready when you are.</p>
+        </div>
+        <div id="wl-body"></div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 CARTHEON · Strasbourg, France · All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="products.js"></script>
+    <script>
+    (function () {
+        'use strict';
+        const CP = window.CartheonProducts;
+        const body = document.getElementById('wl-body');
+        const countEl = document.getElementById('wl-count');
+
+        function escapeHtml(s) {
+            return String(s == null ? '' : s).replace(/[&<>"']/g, c =>
+                ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' })[c]
+            );
+        }
+
+        function addToCart(product) {
+            let cart = [];
+            try { cart = JSON.parse(localStorage.getItem('cartheon_cart')) || []; } catch (e) {}
+            const existing = cart.find(i => i.id === product.id);
+            if (existing) existing.qty = (existing.qty || 1) + 1;
+            else cart.push({
+                id: product.id, name: product.name,
+                price: Number(product.price),
+                category: product.category || '',
+                placeholder: product.symbol || '◯',
+                imageStyle: product.gradient ? `background: ${product.gradient};` : '',
+                qty: 1
+            });
+            localStorage.setItem('cartheon_cart', JSON.stringify(cart));
+        }
+
+        function render() {
+            const items = CP.getWishlist()
+                .map(id => CP.getProduct(id))
+                .filter(Boolean);
+            if (!items.length) {
+                countEl.textContent = 'Saved pieces, ready when you are.';
+                body.innerHTML = `
+                    <div class="wl-empty">
+                        <div class="icon">♡</div>
+                        <h2>No saved pieces yet</h2>
+                        <p>Tap the heart on any piece to save it here. Your wishlist stays with your browser, private to you.</p>
+                        <a href="index.html#shop">Browse the collection</a>
+                    </div>`;
+                return;
+            }
+            countEl.textContent = items.length + ' piece' + (items.length === 1 ? '' : 's') + ' saved';
+            body.innerHTML = `
+                <div class="wl-grid">
+                    ${items.map(p => `
+                        <div class="wl-card">
+                            <a href="product.html?id=${encodeURIComponent(p.id)}">
+                                <div class="thumb" style="${p.image ? `background: url('${encodeURI(p.image)}') center/cover no-repeat;` : (p.gradient ? 'background:'+p.gradient+';' : '')}">
+                                    ${!p.image ? `<span>${escapeHtml(p.symbol || '◯')}</span>` : ''}
+                                </div>
+                                <div class="meta">
+                                    <div class="cat">${escapeHtml(p.category || '')}</div>
+                                    <h4>${escapeHtml(p.name)}</h4>
+                                    <div class="price">€${Number(p.price).toFixed(2)}</div>
+                                </div>
+                            </a>
+                            <div class="wl-actions">
+                                <button type="button" data-add="${escapeHtml(p.id)}">Add to bag</button>
+                                <button type="button" class="secondary" data-remove="${escapeHtml(p.id)}">Remove</button>
+                            </div>
+                        </div>`).join('')}
+                </div>`;
+
+            body.querySelectorAll('[data-add]').forEach(b => {
+                b.addEventListener('click', () => {
+                    const p = CP.getProduct(b.dataset.add);
+                    if (!p) return;
+                    addToCart(p);
+                    const old = b.textContent;
+                    b.textContent = 'Added ✓';
+                    b.disabled = true;
+                    setTimeout(() => { b.textContent = old; b.disabled = false; }, 1400);
+                });
+            });
+            body.querySelectorAll('[data-remove]').forEach(b => {
+                b.addEventListener('click', () => {
+                    CP.removeFromWishlist(b.dataset.remove);
+                    render();
+                });
+            });
+        }
+
+        render();
+        window.addEventListener('wishlist:change', render);
+    })();
+    </script>
+
+    <script src="theme.js" defer></script>
+    <script src="auth-shared.js" defer></script>
+    <script src="cookie-banner.js" defer></script>
+</body>
+</html>

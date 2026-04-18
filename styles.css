@@ -2276,3 +2276,100 @@ html[data-theme="dark"] .nav-logo img,
 html[data-theme="dark"] .footer img[src*="logo"] {
     filter: invert(1) brightness(1.05);
 }
+
+/* ============================================================
+   PRODUCT CARD HEART (wishlist toggle overlay)
+   ============================================================ */
+.product-image { position: relative; }
+.product-heart {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.92);
+    color: #555;
+    border: 1px solid transparent;
+    font-size: 1.05rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.16s, background 0.16s, color 0.16s;
+    z-index: 2;
+    padding: 0;
+}
+.product-heart:hover { transform: scale(1.08); }
+.product-heart.is-active { color: #b4261a; }
+html[data-theme="dark"] .product-heart { background: rgba(23,23,26,0.88); color: #cbc9c2; }
+html[data-theme="dark"] .product-heart.is-active { color: #ff6b5f; }
+
+/* ============================================================
+   RECENTLY VIEWED strip on homepage
+   ============================================================ */
+.recently-viewed {
+    padding: 60px 24px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.recently-viewed .rv-header { text-align: center; margin-bottom: 30px; }
+.recently-viewed .rv-header .label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.66rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 6px;
+}
+.recently-viewed .rv-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 1.9rem;
+    letter-spacing: 0.04em;
+    margin: 0;
+}
+.rv-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+}
+.rv-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: #fff;
+    border: 1px solid #ece9e0;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+html[data-theme="dark"] .rv-card { background: #17171a; border-color: #2a2824; }
+.rv-card:hover { transform: translateY(-3px); box-shadow: 0 4px 14px rgba(0,0,0,0.05); }
+.rv-thumb {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: rgba(0,0,0,0.18);
+}
+html[data-theme="dark"] .rv-thumb { color: rgba(255,255,255,0.12); }
+.rv-meta { padding: 12px 14px 16px; }
+.rv-cat {
+    font-size: 0.64rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 2px;
+}
+.rv-meta h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 1rem;
+    margin: 0 0 3px;
+}
+.rv-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-variant-numeric: tabular-nums;
+    font-size: 0.95rem;
+}

@@ -392,6 +392,73 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    /* ============ Clickable product cards + wishlist heart ============ */
+    // Inject a heart button into every product card (not in the admin's rendering loop).
+    function injectProductHearts() {
+        const CP = window.CartheonProducts;
+        if (!CP) return;
+        $$('.product-card').forEach(card => {
+            if (card.querySelector('.product-heart')) return;
+            const id = card.dataset.id;
+            if (!id) return;
+            const imgWrap = card.querySelector('.product-image');
+            if (!imgWrap) return;
+            const heart = document.createElement('button');
+            heart.type = 'button';
+            heart.className = 'product-heart';
+            const wished = CP.isWishlisted(id);
+            heart.classList.toggle('is-active', wished);
+            heart.innerHTML = wished ? '♥' : '♡';
+            heart.setAttribute('aria-label', wished ? 'Remove from wishlist' : 'Add to wishlist');
+            heart.addEventListener('click', (e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                CP.toggleWishlist(id);
+                const now = CP.isWishlisted(id);
+                heart.classList.toggle('is-active', now);
+                heart.innerHTML = now ? '♥' : '♡';
+                heart.setAttribute('aria-label', now ? 'Remove from wishlist' : 'Add to wishlist');
+            });
+            imgWrap.appendChild(heart);
+        });
+    }
+    injectProductHearts();
+    window.addEventListener('wishlist:change', injectProductHearts);
+
+    // Clickable cards — whole card except the ADD button + heart navigates to PDP
+    $$('.product-card').forEach(card => {
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', (e) => {
+            // Ignore clicks on interactive children
+            if (e.target.closest('.product-add') || e.target.closest('.product-heart')) return;
+            const id = card.dataset.id;
+            if (id) window.location.href = 'product.html?id=' + encodeURIComponent(id);
+        });
+    });
+
+    /* ============ Recently Viewed on home ============ */
+    (function renderRecentlyViewed() {
+        const CP = window.CartheonProducts;
+        if (!CP) return;
+        const host = document.getElementById('recently-viewed-grid');
+        if (!host) return;
+        const items = CP.recentlyViewed();
+        const section = host.closest('section');
+        if (!items.length) { if (section) section.style.display = 'none'; return; }
+        if (section) section.style.display = '';
+        host.innerHTML = items.slice(0, 4).map(p => `
+            <a class="rv-card" href="product.html?id=${encodeURIComponent(p.id)}">
+                <div class="rv-thumb" style="${p.image ? `background: url('${encodeURI(p.image)}') center/cover no-repeat;` : (p.gradient ? 'background:'+p.gradient+';' : '')}">
+                    ${!p.image ? `<span>${(p.symbol || '◯').replace(/[<>&]/g,'')}</span>` : ''}
+                </div>
+                <div class="rv-meta">
+                    <div class="rv-cat">${(p.category || '').replace(/[<>&]/g,'')}</div>
+                    <h4>${(p.name || '').replace(/[<>&]/g,'')}</h4>
+                    <div class="rv-price">€${Number(p.price).toFixed(2)}</div>
+                </div>
+            </a>`).join('');
+    })();
+
     function addToCart(product) {
         const existing = cart.find(i => i.id === product.id);
         if (existing) existing.qty += 1;
