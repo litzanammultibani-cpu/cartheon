@@ -1,6 +1,6 @@
-# LÉTHÉ — Developer Setup
+# CARTHEON — Developer Setup
 
-How to run, develop, and deploy the LÉTHÉ storefront locally.
+How to run, develop, and deploy the CARTHEON storefront locally.
 
 ---
 
@@ -87,7 +87,7 @@ Right-click `index.html` → "Open with Live Server". Hot-reload on save.
 - Both are stored hashed (PBKDF2 + salt) in `localStorage` under the current browser profile.
 - Recovery flow uses EmailJS — see `docs/setup/EMAILJS.md`.
 
-**Resetting a forgotten admin:** if EmailJS isn't configured, recovery falls back to showing the 6-digit code in a browser pop-up. For a hard reset, open DevTools → Application → Local Storage → delete keys starting with `lethe_auth_`.
+**Resetting a forgotten admin:** if EmailJS isn't configured, recovery falls back to showing the 6-digit code in a browser pop-up. For a hard reset, open DevTools → Application → Local Storage → delete keys starting with `cartheon_auth_`.
 
 ---
 
@@ -97,13 +97,13 @@ All data is `localStorage` JSON:
 
 | Key | Purpose |
 |---|---|
-| `lethe_auth_hash` | Master password hash |
-| `lethe_auth_salt` | PBKDF2 salt |
-| `lethe_auth_recovery_email` | Recovery address (hashed) |
-| `lethe_auth_recovery_code` | Active recovery code (hashed, expiry) |
-| `lethe_products` | Array of product objects |
-| `lethe_orders` | Array of order objects |
-| `lethe_cart` | Current visitor's cart (ephemeral) |
+| `cartheon_auth_hash` | Master password hash |
+| `cartheon_auth_salt` | PBKDF2 salt |
+| `cartheon_auth_recovery_email` | Recovery address (hashed) |
+| `cartheon_auth_recovery_code` | Active recovery code (hashed, expiry) |
+| `cartheon_products` | Array of product objects |
+| `cartheon_orders` | Array of order objects |
+| `cartheon_cart` | Current visitor's cart (ephemeral) |
 
 Admin edits write directly to these keys. No backend.
 
@@ -115,7 +115,7 @@ Admin edits write directly to these keys. No backend.
 
 1. Create a new site → "Deploy manually".
 2. Drag-and-drop the entire `lume-store/` folder.
-3. Once deployed, connect the custom domain (`lethe.fr`) in Site Settings → Domain.
+3. Once deployed, connect the custom domain (`cartheon.fr`) in Site Settings → Domain.
 4. Netlify auto-issues a Let's Encrypt SSL cert.
 
 Or connect the Git repo (if you push it to GitHub):
@@ -125,7 +125,7 @@ Or connect the Git repo (if you push it to GitHub):
 git init
 git add .
 git commit -m "initial"
-git remote add origin git@github.com:litza/lethe-store.git
+git remote add origin git@github.com:litza/cartheon-store.git
 git push -u origin main
 ```
 
@@ -141,7 +141,7 @@ Same flow: import the Git repo. Zero-config deploys.
 git push origin main
 ```
 
-Then in GitHub repo → Settings → Pages → Source: `main`, folder `/ (root)`. Site live at `https://litza.github.io/lethe-store/`. Custom domain: add a `CNAME` file with `lethe.fr`, update DNS.
+Then in GitHub repo → Settings → Pages → Source: `main`, folder `/ (root)`. Site live at `https://litza.github.io/cartheon-store/`. Custom domain: add a `CNAME` file with `cartheon.fr`, update DNS.
 
 ### Option D — OVH / Infomaniak hosting (French)
 
@@ -205,7 +205,7 @@ Until then, the static site is fine for showcasing and email-collecting.
 | Symptom | Cause | Fix |
 |---|---|---|
 | Blank white screen | Missing `<script>` tag or JS error | Open DevTools Console |
-| Admin login loops | Hash mismatch or cleared localStorage | Delete `lethe_auth_*` keys, bootstrap again |
+| Admin login loops | Hash mismatch or cleared localStorage | Delete `cartheon_auth_*` keys, bootstrap again |
 | Recovery email not arriving | EmailJS not configured | See `docs/setup/EMAILJS.md`, fallback popup will show |
 | Chatbot unresponsive | `chatbot.js` didn't load | Check Network tab, verify path |
 | Fonts look wrong | Google Fonts CDN blocked | Check browser extension (uBlock, Privacy Badger) |

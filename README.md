@@ -1,8 +1,8 @@
-# LÉTHÉ — Fine Silver Jewelry
+# CARTHEON — Fine Silver Jewelry
 
 **The Art of Timelessness**
 
-LÉTHÉ is a fine sterling silver jewelry brand born in Strasbourg, France. Each piece is designed with intention — timeless silver jewelry made to last and meant to go everywhere with you.
+CARTHEON is a fine sterling silver jewelry brand born in Strasbourg, France. Each piece is designed with intention — timeless silver jewelry made to last and meant to go everywhere with you.
 
 Founders: **Litan Alexandru Răzvan** & **Cherif Sow**.
 
@@ -79,4 +79,4 @@ MIT.
 
 ---
 
-*LÉTHÉ — Strasbourg, France.*
+*CARTHEON — Strasbourg, France.*

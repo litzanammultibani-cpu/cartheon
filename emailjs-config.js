@@ -10,12 +10,12 @@
       → copy the SERVICE ID (e.g. "service_abc1234")
 
    3. Create an email template:
-      Subject: Your LÉTHÉ recovery code
+      Subject: Your CARTHEON recovery code
       Body:
          Hi {{to_name}},
          Your recovery code is {{code}}.
          It expires in 15 minutes.
-         — LÉTHÉ
+         — CARTHEON
       → copy the TEMPLATE ID (e.g. "template_xyz5678")
 
    4. From "Account" → "General", copy your PUBLIC KEY

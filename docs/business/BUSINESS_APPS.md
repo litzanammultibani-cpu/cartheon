@@ -1,6 +1,6 @@
-# LÉTHÉ — Apps & Tools Stack
+# CARTHEON — Apps & Tools Stack
 
-Guide for what LÉTHÉ actually needs to run as a French micro-entreprise e-commerce brand. Researched April 2026. Budget mindset: **free or lowest paid tier first**, upgrade only when revenue justifies it.
+Guide for what CARTHEON actually needs to run as a French micro-entreprise e-commerce brand. Researched April 2026. Budget mindset: **free or lowest paid tier first**, upgrade only when revenue justifies it.
 
 Founders budget: €80 each → €160 shared runway. Every tool below is chosen to keep fixed costs near zero until paying customers arrive.
 
@@ -133,7 +133,7 @@ Source: [Email API pricing comparison April 2026](https://www.buildmvpfast.com/a
 
 Sources: [Omnisend comparison](https://www.omnisend.com/blog/brevo-vs-mailerlite/), [MailToolFinder 2026 pricing](https://mailtoolfinder.com/blog/email-marketing-pricing-comparison-2026/).
 
-### Business email (contact@lethe.fr etc.)
+### Business email (contact@cartheon.fr etc.)
 
 | Provider | Cost/user/mo | Why | Link |
 |---|---|---|---|
@@ -142,7 +142,7 @@ Sources: [Omnisend comparison](https://www.omnisend.com/blog/brevo-vs-mailerlite
 | Proton Business | From €6.99/mo | End-to-end encryption, Swiss-hosted, privacy-first | https://proton.me/business |
 | OVH Email Pro | From ~€1.59/mo/alias | Cheapest French option, barebones | https://www.ovhcloud.com/fr/emails/ |
 
-**Recommendation:** **Infomaniak kSuite Standard** once your domain (`lethe.fr` or `lethe.com`) is live. Two users = ~€9/month. Beats Google on privacy + price and is French-market-friendly.
+**Recommendation:** **Infomaniak kSuite Standard** once your domain (`cartheon.fr` or `cartheon.com`) is live. Two users = ~€9/month. Beats Google on privacy + price and is French-market-friendly.
 
 Sources: [Valydex Proton vs Google](https://valydex.com/compare/google-workspace-vs-proton-mail-business), [EuroToolKit European alternatives](https://www.eurotoolkit.eu/blog/european-alternatives-google-workspace).
 
@@ -155,7 +155,7 @@ Sources: [Valydex Proton vs Google](https://valydex.com/compare/google-workspace
 | Tool | Cost | GDPR-ready | Link |
 |---|---|---|---|
 | **Google Analytics 4** | Free | No (CNIL ruled non-compliant in 2022, requires consent banner + server-side proxy for compliance) | https://analytics.google.com/ |
-| **Plausible** ★ recommended for LÉTHÉ | €9/mo (starter) | Yes, out of the box, no banner needed | https://plausible.io/ |
+| **Plausible** ★ recommended for CARTHEON | €9/mo (starter) | Yes, out of the box, no banner needed | https://plausible.io/ |
 | Matomo Cloud | €29/mo | Yes | https://matomo.org/ |
 | Simple Analytics | €9/mo | Yes | https://www.simpleanalytics.com/ |
 
@@ -241,13 +241,13 @@ Essential. French shoppers expect pickup-point delivery — Mondial Relay serves
 | Zendesk | 1 agent, $19/mo | Legacy enterprise | https://www.zendesk.com/ |
 | Tidio | Free up to 50 conversations/mo | E-commerce + chatbot bundle | https://www.tidio.com/ |
 
-**Recommendation:** LÉTHÉ already has a **custom chatbot** (`chatbot.js`). Keep it for FAQ. Add **Crisp** only if human-staffed chat becomes necessary post-launch. If you grow past 100 tickets/month, upgrade to Crisp Pro (~€25/mo).
+**Recommendation:** CARTHEON already has a **custom chatbot** (`chatbot.js`). Keep it for FAQ. Add **Crisp** only if human-staffed chat becomes necessary post-launch. If you grow past 100 tickets/month, upgrade to Crisp Pro (~€25/mo).
 
 Source: [Crisp vs Intercom 2026](https://www.featurebase.app/blog/crisp-vs-intercom).
 
 ### Help center
 
-**Notion public page** — free, owns the URL, easy to update. Example: `help.lethe.fr` → public Notion doc. Upgrade to a proper help center (Crisp Helpdesk, Intercom Articles) at 500+ orders/month.
+**Notion public page** — free, owns the URL, easy to update. Example: `help.cartheon.fr` → public Notion doc. Upgrade to a proper help center (Crisp Helpdesk, Intercom Articles) at 500+ orders/month.
 
 ---
 
@@ -282,7 +282,7 @@ Instagram Insights (native) is enough at launch. Add Iconosquare (€49/mo) only
 | Mojo | Free (IAP) | Animated stories/reels | https://www.mojo.video/ |
 | Lightroom Mobile | Free (presets in-app) | Product photo color grading | https://lightroom.adobe.com/ |
 
-**Recommendation:** Canva Free + Photoroom Free covers 90% of LÉTHÉ's needs for launch. Upgrade Canva to Pro only after 100 orders — brand kit and background remover justify it then.
+**Recommendation:** Canva Free + Photoroom Free covers 90% of CARTHEON's needs for launch. Upgrade Canva to Pro only after 100 orders — brand kit and background remover justify it then.
 
 ### Product photography kit (physical)
 

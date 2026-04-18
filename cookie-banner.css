@@ -1,5 +1,5 @@
 /* ============ COOKIE BANNER ============ */
-.lethe-cookie-banner {
+.cartheon-cookie-banner {
     position: fixed;
     left: 20px;
     right: 20px;
@@ -22,13 +22,13 @@
     font-family: 'Inter', sans-serif;
 }
 
-.lethe-cookie-banner.visible {
+.cartheon-cookie-banner.visible {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
 }
 
-.lethe-cookie-text {
+.cartheon-cookie-text {
     flex: 1;
     min-width: 260px;
     font-size: 13px;
@@ -38,7 +38,7 @@
     font-weight: 300;
 }
 
-.lethe-cookie-text strong {
+.cartheon-cookie-text strong {
     font-family: 'Cormorant Garamond', serif;
     font-size: 16px;
     color: #fafaf7;
@@ -48,23 +48,23 @@
     font-weight: 500;
 }
 
-.lethe-cookie-text a {
+.cartheon-cookie-text a {
     color: #fafaf7;
     border-bottom: 1px solid #555;
     transition: border-color 0.3s;
 }
 
-.lethe-cookie-text a:hover {
+.cartheon-cookie-text a:hover {
     border-color: #fafaf7;
 }
 
-.lethe-cookie-actions {
+.cartheon-cookie-actions {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
 }
 
-.lethe-cookie-btn {
+.cartheon-cookie-btn {
     padding: 12px 22px;
     font-family: 'Inter', sans-serif;
     font-size: 10px;
@@ -77,33 +77,33 @@
     color: #fafaf7;
 }
 
-.lethe-cookie-btn.primary {
+.cartheon-cookie-btn.primary {
     background: #fafaf7;
     color: #0a0a0a;
 }
 
-.lethe-cookie-btn.primary:hover {
+.cartheon-cookie-btn.primary:hover {
     background: transparent;
     color: #fafaf7;
 }
 
-.lethe-cookie-btn.secondary:hover {
+.cartheon-cookie-btn.secondary:hover {
     background: #fafaf7;
     color: #0a0a0a;
 }
 
-.lethe-cookie-btn.ghost {
+.cartheon-cookie-btn.ghost {
     border-color: #555;
     color: #bbb;
 }
 
-.lethe-cookie-btn.ghost:hover {
+.cartheon-cookie-btn.ghost:hover {
     border-color: #fafaf7;
     color: #fafaf7;
 }
 
 /* Modal for customize */
-.lethe-cookie-modal {
+.cartheon-cookie-modal {
     position: fixed;
     inset: 0;
     background: rgba(10, 10, 10, 0.7);
@@ -114,11 +114,11 @@
     padding: 20px;
 }
 
-.lethe-cookie-modal.open {
+.cartheon-cookie-modal.open {
     display: flex;
 }
 
-.lethe-cookie-modal-inner {
+.cartheon-cookie-modal-inner {
     background: #fafaf7;
     color: #1a1a1a;
     max-width: 520px;
@@ -130,7 +130,7 @@
     overflow-y: auto;
 }
 
-.lethe-cookie-modal-inner h2 {
+.cartheon-cookie-modal-inner h2 {
     font-family: 'Cormorant Garamond', serif;
     font-size: 28px;
     font-weight: 400;
@@ -138,14 +138,14 @@
     letter-spacing: 0.02em;
 }
 
-.lethe-cookie-modal-sub {
+.cartheon-cookie-modal-sub {
     font-size: 13px;
     color: #666;
     margin-bottom: 28px;
     line-height: 1.6;
 }
 
-.lethe-cookie-category {
+.cartheon-cookie-category {
     border-top: 1px solid #e0e0e0;
     padding: 20px 0;
     display: flex;
@@ -154,12 +154,12 @@
     gap: 16px;
 }
 
-.lethe-cookie-category:last-of-type {
+.cartheon-cookie-category:last-of-type {
     border-bottom: 1px solid #e0e0e0;
     margin-bottom: 28px;
 }
 
-.lethe-cookie-category-info h4 {
+.cartheon-cookie-category-info h4 {
     font-family: 'Cormorant Garamond', serif;
     font-size: 18px;
     font-weight: 500;
@@ -167,13 +167,13 @@
     letter-spacing: 0.02em;
 }
 
-.lethe-cookie-category-info p {
+.cartheon-cookie-category-info p {
     font-size: 12px;
     color: #666;
     line-height: 1.6;
 }
 
-.lethe-cookie-toggle {
+.cartheon-cookie-toggle {
     position: relative;
     width: 44px;
     height: 24px;
@@ -181,13 +181,13 @@
     margin-top: 4px;
 }
 
-.lethe-cookie-toggle input {
+.cartheon-cookie-toggle input {
     opacity: 0;
     width: 0;
     height: 0;
 }
 
-.lethe-cookie-toggle-slider {
+.cartheon-cookie-toggle-slider {
     position: absolute;
     inset: 0;
     background: #d0d0d0;
@@ -196,7 +196,7 @@
     transition: background 0.3s;
 }
 
-.lethe-cookie-toggle-slider::before {
+.cartheon-cookie-toggle-slider::before {
     content: '';
     position: absolute;
     width: 18px;
@@ -208,58 +208,58 @@
     transition: transform 0.3s;
 }
 
-.lethe-cookie-toggle input:checked + .lethe-cookie-toggle-slider {
+.cartheon-cookie-toggle input:checked + .cartheon-cookie-toggle-slider {
     background: #0a0a0a;
 }
 
-.lethe-cookie-toggle input:checked + .lethe-cookie-toggle-slider::before {
+.cartheon-cookie-toggle input:checked + .cartheon-cookie-toggle-slider::before {
     transform: translateX(20px);
 }
 
-.lethe-cookie-toggle input:disabled + .lethe-cookie-toggle-slider {
+.cartheon-cookie-toggle input:disabled + .cartheon-cookie-toggle-slider {
     background: #0a0a0a;
     opacity: 0.6;
     cursor: not-allowed;
 }
 
-.lethe-cookie-modal-actions {
+.cartheon-cookie-modal-actions {
     display: flex;
     gap: 10px;
     justify-content: flex-end;
     flex-wrap: wrap;
 }
 
-.lethe-cookie-modal-actions .lethe-cookie-btn {
+.cartheon-cookie-modal-actions .cartheon-cookie-btn {
     border-color: #0a0a0a;
     color: #0a0a0a;
 }
 
-.lethe-cookie-modal-actions .lethe-cookie-btn:hover {
+.cartheon-cookie-modal-actions .cartheon-cookie-btn:hover {
     background: #0a0a0a;
     color: #fafaf7;
 }
 
-.lethe-cookie-modal-actions .lethe-cookie-btn.primary {
+.cartheon-cookie-modal-actions .cartheon-cookie-btn.primary {
     background: #0a0a0a;
     color: #fafaf7;
 }
 
-.lethe-cookie-modal-actions .lethe-cookie-btn.primary:hover {
+.cartheon-cookie-modal-actions .cartheon-cookie-btn.primary:hover {
     background: transparent;
     color: #0a0a0a;
 }
 
 @media (max-width: 640px) {
-    .lethe-cookie-banner {
+    .cartheon-cookie-banner {
         padding: 20px 20px;
         gap: 16px;
     }
 
-    .lethe-cookie-actions {
+    .cartheon-cookie-actions {
         width: 100%;
     }
 
-    .lethe-cookie-btn {
+    .cartheon-cookie-btn {
         flex: 1;
         padding: 12px 14px;
     }

@@ -1,4 +1,4 @@
-# LÉTHÉ — French Ecommerce Legal Requirements
+# CARTHEON — French Ecommerce Legal Requirements
 
 Plain-language guide for founders. Current to April 2026. Not legal advice — for large decisions (CGU disputes, CNIL complaints, customs), talk to a lawyer.
 
@@ -28,7 +28,7 @@ The micro-entreprise (auto-entrepreneur) regime is the simplest legal wrapper fo
 ### Steps
 
 1. **Go to the Guichet Unique:** https://procedures.inpi.fr/ — the single gateway replacing all old forms since 2023.
-2. Create an account for **each** founder (LÉTHÉ as a joint venture is tricky — see below).
+2. Create an account for **each** founder (CARTHEON as a joint venture is tricky — see below).
 3. Fill out the **déclaration de début d'activité** under "Activité commerciale" → "Vente de biens".
 4. Auto-forwarded to:
    - **INSEE** → issues your **SIREN** (9 digits) and **SIRET** (14 digits) within ~15 days.
@@ -46,7 +46,7 @@ Micro-entreprise is **single-person only**. Options:
 | **Create an SAS (société)** ★ recommended for 2-founder brands | Shared ownership, clean governance, enterprise credibility | ~€300 setup cost, bookkeeping more formal |
 | SASU (single-person SAS), other founder as employee | Clean, can evolve to SAS | Slightly more paperwork than ME |
 
-**Recommendation for LÉTHÉ:** Register as **ME under Litan's name first** to validate demand (€0 cost, works this week). **Once monthly revenue > €2,000**, create an SAS jointly. Meantime, a written founder agreement (even a Notion page) covers profit split and IP ownership.
+**Recommendation for CARTHEON:** Register as **ME under Litan's name first** to validate demand (€0 cost, works this week). **Once monthly revenue > €2,000**, create an SAS jointly. Meantime, a written founder agreement (even a Notion page) covers profit split and IP ownership.
 
 Social contributions for ME selling goods: **12.3% of turnover** (2026 rate). No turnover = no contribution. Declarations are monthly or quarterly.
 

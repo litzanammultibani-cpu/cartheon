@@ -1,4 +1,4 @@
-# LÉTHÉ — Launch Checklist
+# CARTHEON — Launch Checklist
 
 From today (localhost) to first paying customer. Pragmatic, calendar-driven. Every item tickable. Assumes ~2 hours/day total between the two founders.
 
@@ -15,10 +15,10 @@ Foundations. Zero money spent on production; this is all setup.
 - [ ] Open Shine Free business account (awaits SIRET, but start the application)
 
 ### Domain & identity
-- [ ] Buy `lethe.fr` on OVH or Gandi (~€9/yr)
-- [ ] Reserve `@lethe_paris` or `@lethe.official` on Instagram + TikTok (check availability first; LÉTHÉ/ Lethe is common)
+- [ ] Buy `cartheon.fr` on OVH or Gandi (~€9/yr)
+- [ ] Reserve `@cartheon_paris` or `@cartheon.official` on Instagram + TikTok (check availability first; CARTHEON/ Cartheon is common)
 - [ ] Reserve same handle on Pinterest
-- [ ] Create Google account `hello.lethe@gmail.com` as placeholder until domain email is live
+- [ ] Create Google account `hello.cartheon@gmail.com` as placeholder until domain email is live
 
 ### Supplier outreach
 - [ ] Create Alibaba account (free)
@@ -48,7 +48,7 @@ Samples arrive, photography happens, brand sharpens.
 - [ ] Shoot lifestyle mood-board photos (free stock + your own moodboards)
 - [ ] Record 3 "brand story" TikTok drafts (face optional — hands/close-ups work)
 - [ ] Draft copy for: `/about`, `/cgv`, `/retractation`, `/mentions-legales`, `/confidentialite`
-- [ ] Build a simple Notion help center (`help.lethe.fr` via Notion public link)
+- [ ] Build a simple Notion help center (`help.cartheon.fr` via Notion public link)
 
 ### Legal prep
 - [ ] Choose a mediator subscription (~€150/yr — FEVAD or CM2C)
@@ -58,7 +58,7 @@ Samples arrive, photography happens, brand sharpens.
 ### Financial prep
 - [ ] Once SIRET arrives: activate URSSAF account, link Shine
 - [ ] Install Indy (free) and connect Shine
-- [ ] Register `@` for `hello@lethe.fr` — Infomaniak kSuite Standard, 2 mailboxes (~€9/mo)
+- [ ] Register `@` for `hello@cartheon.fr` — Infomaniak kSuite Standard, 2 mailboxes (~€9/mo)
 
 ### Sample arrival — QC day
 - [ ] Weight test (compare to stated grams)
@@ -77,7 +77,7 @@ Samples arrive, photography happens, brand sharpens.
 Payment stack, real photos, first inventory.
 
 ### Production order (Scenario B)
-- [ ] Send LÉTHÉ `logo.svg` to Yilun for engraving
+- [ ] Send CARTHEON `logo.svg` to Yilun for engraving
 - [ ] Confirm hang tag design (approve digital proof)
 - [ ] Place order: 30 paperclip chains, engraved, hang-tagged (~€220)
 - [ ] Order A1 pouches (500 units, ~€50)
@@ -89,7 +89,7 @@ Payment stack, real photos, first inventory.
 - [ ] Shoot product photos: 6 angles × 30 pieces — hero white + 3 lifestyle per SKU
 - [ ] Remove backgrounds with Photoroom
 - [ ] Light color correction in Lightroom Mobile
-- [ ] Upload to Google Drive → replace placeholder symbols on LÉTHÉ site
+- [ ] Upload to Google Drive → replace placeholder symbols on CARTHEON site
 
 ### Payment stack
 - [ ] Activate Stripe — verify bank, upload CNI, link to SIRET

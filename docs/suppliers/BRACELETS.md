@@ -1,4 +1,4 @@
-# LÉTHÉ — Bracelet Suppliers (Alibaba)
+# CARTHEON — Bracelet Suppliers (Alibaba)
 
 Compiled 16 April 2026. All prices in EUR. Every supplier listed has Trade Assurance enabled and a 4.5+ star rating.
 
@@ -8,7 +8,7 @@ Compiled 16 April 2026. All prices in EUR. Every supplier listed has Trade Assur
 
 - Primary supplier: **Guangzhou Yilun Jewelry Co., Ltd.** — handles both paperclip and tennis bracelets, single shipment, free logo engraving at MOQ 30.
 - Start with Scenario A (€57–67): 2 samples each of paperclip + tennis from Yilun.
-- After QC passes, go to Scenario B: 30 paperclip chains with LÉTHÉ logo, ~€220.
+- After QC passes, go to Scenario B: 30 paperclip chains with CARTHEON logo, ~€220.
 
 ---
 
@@ -131,7 +131,7 @@ Re-order best-seller at 100+ pcs (unit drops toward €5.99). Add #2 tennis brac
 3. **Week 2.** Place Scenario A sample order (2–4 pieces, ~€30–60). Expect delivery in ~15 days.
 4. **Week 4.** Run QC: real 925 stamp, weight, polish, clasp, packaging.
 5. **If QC passes.** Send Scenario B order with SVG logo attached.
-6. **Week 6.** Photograph real pieces, replace placeholder symbols on LÉTHÉ site.
+6. **Week 6.** Photograph real pieces, replace placeholder symbols on CARTHEON site.
 7. **Week 7–8.** Launch.
 
 ---
@@ -140,11 +140,11 @@ Re-order best-seller at 100+ pcs (unit drops toward €5.99). Add #2 tennis brac
 
 Copy-paste into the Alibaba chat with Guangzhou Yilun:
 
-> **Subject:** Wholesale inquiry — LÉTHÉ, silver bracelets for French/EU market
+> **Subject:** Wholesale inquiry — CARTHEON, silver bracelets for French/EU market
 >
 > Hello,
 >
-> I represent LÉTHÉ, a new luxury silver jewelry brand based in France, launching in Europe and worldwide.
+> I represent CARTHEON, a new luxury silver jewelry brand based in France, launching in Europe and worldwide.
 >
 > We're very interested in your **925 Sterling Silver Paperclip Chain Bracelet** (product ID 1601484646166) and your **Tennis Bracelet with CZ** (1600505145668).
 >
@@ -156,13 +156,13 @@ Copy-paste into the Alibaba chat with Guangzhou Yilun:
 > 4. **Shipping cost** for 30 pieces to France (DHL/FedEx preferred, with tracking).
 > 5. **Payment methods:** we'd prefer Alibaba Trade Assurance.
 > 6. **Customs & VAT:** do you help with EU import documentation (IOSS / commercial invoice)?
-> 7. **Hang tag customization:** can you print "LÉTHÉ" on the tag?
+> 7. **Hang tag customization:** can you print "CARTHEON" on the tag?
 >
 > We're planning quarterly orders starting small and scaling up. Building a long-term relationship with a reliable manufacturer is our priority.
 >
 > Best regards,
 > Litan Alexandru Răzvan & Cherif Sow
-> Co-founders, LÉTHÉ
+> Co-founders, CARTHEON
 
 ---
 

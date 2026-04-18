@@ -1,5 +1,5 @@
 /* =========================================================
-   LÉTHÉ — Interactive storefront
+   CARTHEON — Interactive storefront
    ========================================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -15,12 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
     /* =========================================================
        APPLY ADMIN PRODUCT OVERRIDES (from localStorage)
        The admin panel can customize/add products. Any product
-       saved in `lethe_products` overrides or extends the static
+       saved in `cartheon_products` overrides or extends the static
        DOM product cards before anything else reads them.
        ========================================================= */
     (function applyAdminProducts() {
         let stored;
-        try { stored = JSON.parse(localStorage.getItem('lethe_products')); }
+        try { stored = JSON.parse(localStorage.getItem('cartheon_products')); }
         catch { stored = null; }
         if (!Array.isArray(stored)) return;
 
@@ -268,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const email = signinForm.querySelector('input[type="email"]').value;
         const name  = email.split('@')[0];
         const user  = { name, email, createdAt: Date.now() };
-        localStorage.setItem('lethe_user', JSON.stringify(user));
+        localStorage.setItem('cartheon_user', JSON.stringify(user));
         addCustomerRecord(user);
         showSuccess(name);
     });
@@ -277,17 +277,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const firstName = registerForm.querySelector('input[type="text"]').value;
         const email     = registerForm.querySelector('input[type="email"]').value;
         const user      = { name: firstName, email, createdAt: Date.now() };
-        localStorage.setItem('lethe_user', JSON.stringify(user));
+        localStorage.setItem('cartheon_user', JSON.stringify(user));
         addCustomerRecord(user);
         showSuccess(firstName);
     });
 
     function addCustomerRecord(user) {
         let list = [];
-        try { list = JSON.parse(localStorage.getItem('lethe_users')) || []; } catch {}
+        try { list = JSON.parse(localStorage.getItem('cartheon_users')) || []; } catch {}
         if (!list.some(u => u.email === user.email)) {
             list.push(user);
-            localStorage.setItem('lethe_users', JSON.stringify(list));
+            localStorage.setItem('cartheon_users', JSON.stringify(list));
         }
     }
     $('#forgot-link').addEventListener('click', e => {
@@ -317,7 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     function getStoredUser() {
-        try { return JSON.parse(localStorage.getItem('lethe_user')); }
+        try { return JSON.parse(localStorage.getItem('cartheon_user')); }
         catch { return null; }
     }
     function updateAccountBadge() {
@@ -339,7 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const bagCountEl   = $('#bag-count');
     const checkoutBtn  = $('#checkout-btn');
 
-    const CART_KEY = 'lethe_cart';
+    const CART_KEY = 'cartheon_cart';
     let cart = loadCart();
 
     function loadCart() {
@@ -547,19 +547,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const storageBanner = $('#storage-banner');
     function storageOk() {
         try {
-            const k = '__lethe_storage_check__';
+            const k = '__cartheon_storage_check__';
             localStorage.setItem(k, '1');
             localStorage.removeItem(k);
             return true;
         } catch { return false; }
     }
-    if (storageBanner && !storageOk() && !sessionStorage.getItem('lethe_storage_dismissed')) {
+    if (storageBanner && !storageOk() && !sessionStorage.getItem('cartheon_storage_dismissed')) {
         storageBanner.hidden = false;
         const closeBtn = storageBanner.querySelector('.storage-banner-close');
         if (closeBtn) {
             closeBtn.addEventListener('click', () => {
                 storageBanner.hidden = true;
-                try { sessionStorage.setItem('lethe_storage_dismissed', '1'); } catch {}
+                try { sessionStorage.setItem('cartheon_storage_dismissed', '1'); } catch {}
             });
         }
     }
@@ -579,18 +579,18 @@ document.addEventListener('DOMContentLoaded', () => {
             // Persist for admin panel visibility
             try {
                 let list = [];
-                try { list = JSON.parse(localStorage.getItem('lethe_newsletter')) || []; } catch {}
+                try { list = JSON.parse(localStorage.getItem('cartheon_newsletter')) || []; } catch {}
                 if (!list.some(x => (x.email || x) === email)) {
                     list.push({ email, joinedAt: Date.now() });
-                    localStorage.setItem('lethe_newsletter', JSON.stringify(list));
+                    localStorage.setItem('cartheon_newsletter', JSON.stringify(list));
                 }
             } catch {}
 
             newsletterMsg.innerHTML = `
-                <p class="confirm-heading">Welcome to the LÉTHÉ circle.</p>
+                <p class="confirm-heading">Welcome to the CARTHEON circle.</p>
                 <p class="confirm-body">We'll reach <strong>${escapeHtml(email)}</strong> first when new pieces drop.<br>
                 Use this code for 10% off your first order:</p>
-                <span class="confirm-code" title="Click to copy">LETHE10</span>
+                <span class="confirm-code" title="Click to copy">CARTHEON10</span>
             `;
             newsletterMsg.classList.add('is-visible');
             input.value = '';
@@ -600,7 +600,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (codeEl) {
                 codeEl.addEventListener('click', async () => {
                     try {
-                        await navigator.clipboard.writeText('LETHE10');
+                        await navigator.clipboard.writeText('CARTHEON10');
                         const original = codeEl.textContent;
                         codeEl.textContent = 'COPIED ✓';
                         setTimeout(() => { codeEl.textContent = original; }, 1500);

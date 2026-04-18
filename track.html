@@ -3,31 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LÉTHÉ — Track your order</title>
+    <title>CARTHEON — Track your order</title>
 
     <!-- Primary meta -->
-    <meta name="description" content="Track your LÉTHÉ order — enter your order number and email to see status, tracking details, and delivery updates for your sterling silver piece.">
-    <meta name="keywords" content="LÉTHÉ order tracking, track my silver bracelet, jewelry delivery, LÉTHÉ shipment status">
+    <meta name="description" content="Track your CARTHEON order — enter your order number and email to see status, tracking details, and delivery updates for your sterling silver piece.">
+    <meta name="keywords" content="CARTHEON order tracking, track my silver bracelet, jewelry delivery, CARTHEON shipment status">
     <meta name="robots" content="noindex, follow">
     <meta name="theme-color" content="#0a0a0a">
-    <link rel="canonical" href="https://lethe.store/track.html">
+    <link rel="canonical" href="https://cartheon.store/track.html">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="LÉTHÉ">
+    <meta property="og:site_name" content="CARTHEON">
     <meta property="og:locale" content="en_US">
-    <meta property="og:url" content="https://lethe.store/track.html">
-    <meta property="og:title" content="LÉTHÉ — Track your order">
-    <meta property="og:description" content="Track your LÉTHÉ order in real time — status, carrier, and delivery updates, all in one place.">
-    <meta property="og:image" content="https://lethe.store/og-image.svg">
+    <meta property="og:url" content="https://cartheon.store/track.html">
+    <meta property="og:title" content="CARTHEON — Track your order">
+    <meta property="og:description" content="Track your CARTHEON order in real time — status, carrier, and delivery updates, all in one place.">
+    <meta property="og:image" content="https://cartheon.store/og-image.svg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="LÉTHÉ — Track your order">
-    <meta name="twitter:description" content="Enter your order number and email to see tracking details for your LÉTHÉ piece.">
-    <meta name="twitter:image" content="https://lethe.store/og-image.svg">
+    <meta name="twitter:title" content="CARTHEON — Track your order">
+    <meta name="twitter:description" content="Enter your order number and email to see tracking details for your CARTHEON piece.">
+    <meta name="twitter:image" content="https://cartheon.store/og-image.svg">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -293,7 +293,7 @@
                 <a href="index.html#about">ABOUT</a>
             </div>
             <div class="nav-logo">
-                <a href="index.html" aria-label="LÉTHÉ home"><img src="logo.svg" alt="LÉTHÉ" height="32"></a>
+                <a href="index.html" aria-label="CARTHEON home"><img src="logo.svg" alt="CARTHEON" height="32"></a>
             </div>
             <div class="nav-right">
                 <a href="index.html" aria-label="Search">SEARCH</a>
@@ -375,11 +375,11 @@
                     </div>
                     <div>
                         <dt>Delivered</dt>
-                        <dd>Your LÉTHÉ piece has arrived. Enjoy it — and email hello@lethe.store if anything's not perfect.</dd>
+                        <dd>Your CARTHEON piece has arrived. Enjoy it — and email hello@cartheon.store if anything's not perfect.</dd>
                     </div>
                     <div>
                         <dt>Cancelled</dt>
-                        <dd>The order was cancelled. If this was in error, contact us at hello@lethe.store.</dd>
+                        <dd>The order was cancelled. If this was in error, contact us at hello@cartheon.store.</dd>
                     </div>
                 </dl>
             </div>
@@ -403,10 +403,10 @@
             <span class="sep">·</span>
             <a href="contact.html">Contact</a>
             <span class="sep">·</span>
-            <button type="button" class="footer-manage-cookies" onclick="window.letheCookieOpen && window.letheCookieOpen()">Manage cookies</button>
+            <button type="button" class="footer-manage-cookies" onclick="window.cartheonCookieOpen && window.cartheonCookieOpen()">Manage cookies</button>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 LÉTHÉ · The art of timeless silver.</p>
+            <p>© 2026 CARTHEON · The art of timeless silver.</p>
         </div>
     </footer>
 
@@ -508,7 +508,7 @@
                 }
 
                 let orders = [];
-                try { orders = JSON.parse(localStorage.getItem('lethe_orders')) || []; } catch (err) { orders = []; }
+                try { orders = JSON.parse(localStorage.getItem('cartheon_orders')) || []; } catch (err) { orders = []; }
 
                 const order = orders.find(o => o && o.number === number);
                 if (!order) {

@@ -1,5 +1,5 @@
 /* =========================================================
-   LÉTHÉ — Admin Panel
+   CARTHEON — Admin Panel
    Security:
      - PBKDF2-SHA256 (200,000 iterations) password hashing
      - 16-byte random salt per credential
@@ -16,13 +16,13 @@
    ========================================================= */
 
 const LS = {
-    AUTH:         'lethe_admin_auth_v1',   // { username, email, salt, hash, iterations, createdAt }
-    LOCKOUT:      'lethe_admin_lockout',   // { count, until }
-    RECOVERY:     'lethe_admin_recovery',  // { codeHash, salt, expires, attempts }
-    ORDERS:       'lethe_orders',
-    USERS:        'lethe_users',           // customer list
-    PRODUCTS:     'lethe_products',
-    PENDING:      'lethe_admin_pending_actions', // dual-control / 4-eyes queue
+    AUTH:         'cartheon_admin_auth_v1',   // { username, email, salt, hash, iterations, createdAt }
+    LOCKOUT:      'cartheon_admin_lockout',   // { count, until }
+    RECOVERY:     'cartheon_admin_recovery',  // { codeHash, salt, expires, attempts }
+    ORDERS:       'cartheon_orders',
+    USERS:        'cartheon_users',           // customer list
+    PRODUCTS:     'cartheon_products',
+    PENDING:      'cartheon_admin_pending_actions', // dual-control / 4-eyes queue
 };
 
 /* ---------- Dual-control (4-eyes) constants ---------- */
@@ -36,7 +36,7 @@ const PENDING_ADMIN_ACTIONS = new Set([
 ]);
 
 const SS = {
-    SESSION:      'lethe_admin_session',   // { token, user, expires }
+    SESSION:      'cartheon_admin_session',   // { token, user, expires }
 };
 
 const PBKDF2_ITERATIONS = 200000;
@@ -720,7 +720,7 @@ async function sendRecoveryEmail(email, username, code) {
             to_name:  username,
             to_email: email,
             code:     code,
-            subject:  'Your LÉTHÉ recovery code'
+            subject:  'Your CARTHEON recovery code'
         });
         return true;
     } catch (err) {
@@ -839,7 +839,7 @@ function showAdmin() {
     $('#clear-customers-btn').addEventListener('click', () => {
         if (!confirm('Delete ALL customer records?')) return;
         localStorage.removeItem(LS.USERS);
-        localStorage.removeItem('lethe_user');
+        localStorage.removeItem('cartheon_user');
         renderDashboard(); renderCustomers();
     });
     $('#reset-products-btn').addEventListener('click', () => {
@@ -1202,7 +1202,7 @@ function saveOrderUpdate(number) {
    ========================================================= */
 function collectAllUsers() {
     const list = lsGet(LS.USERS, []);
-    const legacy = lsGet('lethe_user');
+    const legacy = lsGet('cartheon_user');
     if (legacy && !list.some(u => u.email === legacy.email)) {
         list.push({ ...legacy, createdAt: Date.now() });
         lsSet(LS.USERS, list);
@@ -1887,7 +1887,7 @@ function exportData() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `lethe-backup-${Date.now()}.json`;
+    a.download = `cartheon-backup-${Date.now()}.json`;
     document.body.appendChild(a); a.click(); a.remove();
     URL.revokeObjectURL(url);
 }

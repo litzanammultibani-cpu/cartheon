@@ -1,6 +1,6 @@
 # Password Recovery Setup — EmailJS (5 minutes)
 
-LÉTHÉ's password recovery sends a 6-digit verification code by email. The actual email sending uses **EmailJS** — a free service that lets static sites send real emails without a backend server. You set up an EmailJS account once, paste three values into `emailjs-config.js`, and recovery emails go out automatically.
+CARTHEON's password recovery sends a 6-digit verification code by email. The actual email sending uses **EmailJS** — a free service that lets static sites send real emails without a backend server. You set up an EmailJS account once, paste three values into `emailjs-config.js`, and recovery emails go out automatically.
 
 > **Current status:** `emailjs-config.js` ships with **empty placeholders**. Until you fill in the 3 values below, recovery is in **development mode** — it still works, but the code is shown in a popup on screen instead of being emailed. Nothing breaks. This is fine for local testing and for friends-and-family previews.
 >
@@ -33,7 +33,7 @@ Go to **https://www.emailjs.com/** → click "Sign Up Free" → verify your emai
 - Dashboard → **Email Templates** → **Create New Template**
 - **Subject:**
   ```
-  Your LÉTHÉ recovery code
+  Your CARTHEON recovery code
   ```
 - **To Email:**
   ```
@@ -43,13 +43,13 @@ Go to **https://www.emailjs.com/** → click "Sign Up Free" → verify your emai
   ```
   Hi {{to_name}},
 
-  Your LÉTHÉ recovery code is:
+  Your CARTHEON recovery code is:
 
        {{code}}
 
   It expires in 15 minutes. If you didn't request this, ignore this email.
 
-  — LÉTHÉ
+  — CARTHEON
   ```
 - Save → copy the **Template ID** (looks like `template_xyz5678`)
 
@@ -117,7 +117,7 @@ Because this is a frontend-only app:
 2. **Rate limiting is client-side** — an attacker with full access to the device can bypass it. For public-internet production, move auth to a server.
 3. **EmailJS public key is visible in the page source** — anyone can see it. That's how EmailJS works; your SMTP password stays on their server. Just be aware your monthly quota could be abused if someone scripts against it. EmailJS has anti-abuse protections.
 
-When you graduate LÉTHÉ to a real backend (Shopify, custom server, or Supabase), you replace all of this with server-side auth. For now, this is as strong as client-side recovery gets.
+When you graduate CARTHEON to a real backend (Shopify, custom server, or Supabase), you replace all of this with server-side auth. For now, this is as strong as client-side recovery gets.
 
 ---
 

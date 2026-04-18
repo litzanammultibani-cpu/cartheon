@@ -6,4 +6,4 @@ Disallow: /track.html
 # Respect everything else
 Allow: /
 
-Sitemap: https://lethe.store/sitemap.xml
+Sitemap: https://cartheon.store/sitemap.xml

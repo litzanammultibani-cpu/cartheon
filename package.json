@@ -1,7 +1,7 @@
 {
-  "name": "lethe-store",
+  "name": "cartheon-store",
   "version": "1.0.0",
-  "description": "LETHE - Fine sterling silver jewelry. The art of timelessness.",
+  "description": "CARTHEON - Fine sterling silver jewelry. The art of timelessness.",
   "main": "index.html",
   "scripts": {
     "start": "npx serve -s . -l 8080",
@@ -12,14 +12,14 @@
     "jewelry",
     "silver",
     "ecommerce",
-    "lethe",
+    "cartheon",
     "static-site"
   ],
   "author": "litza",
   "license": "MIT",
-  "homepage": "https://github.com/litza/lethe-store#readme",
+  "homepage": "https://github.com/litza/cartheon-store#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/litza/lethe-store.git"
+    "url": "https://github.com/litza/cartheon-store.git"
   }
 }
