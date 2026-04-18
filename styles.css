@@ -2014,3 +2014,265 @@ input:focus-visible,
     .back-to-top { width: 40px; height: 40px; bottom: 18px; left: 18px; }
 }
 
+
+/* ============================================================
+   THEME TOGGLE BUTTON (inside .nav-right)
+   ============================================================ */
+.theme-toggle {
+    background: transparent;
+    border: 1px solid transparent;
+    color: inherit;
+    cursor: pointer;
+    font-size: 1.1rem;
+    line-height: 1;
+    padding: 6px 10px;
+    margin-left: 4px;
+    border-radius: 0;
+    transition: background 0.18s, border-color 0.18s, color 0.18s;
+    font-family: inherit;
+}
+.theme-toggle:hover { border-color: currentColor; }
+.theme-toggle:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+
+/* ============================================================
+   DARK THEME
+   Activated by <html data-theme="dark">. Palette:
+     bg:     #0e0e0e  (primary background)
+     surface:#17171a  (cards, panels)
+     raised: #1f1e22  (nav, footer)
+     text:   #e7e5df
+     muted:  #9c9a93
+     dim:    #75736b
+     border: #2a2824
+     accent: #e7e5df  (flipped from light)
+   ============================================================ */
+html[data-theme="dark"] body,
+html[data-theme="dark"] {
+    background: #0e0e0e !important;
+    color: #e7e5df;
+}
+html[data-theme="dark"] .navbar,
+html[data-theme="dark"] .announcement {
+    background: #0e0e0e;
+    color: #e7e5df;
+    border-color: #2a2824;
+}
+html[data-theme="dark"] .navbar a,
+html[data-theme="dark"] .nav-left a,
+html[data-theme="dark"] .nav-right a {
+    color: #e7e5df;
+}
+html[data-theme="dark"] .navbar a:hover,
+html[data-theme="dark"] .nav-left a:hover,
+html[data-theme="dark"] .nav-right a:hover {
+    color: #fff;
+}
+html[data-theme="dark"] .hero,
+html[data-theme="dark"] .section-title,
+html[data-theme="dark"] .about,
+html[data-theme="dark"] .newsletter,
+html[data-theme="dark"] .footer,
+html[data-theme="dark"] .content-main {
+    background: #0e0e0e;
+    color: #e7e5df;
+}
+html[data-theme="dark"] .shop,
+html[data-theme="dark"] .collections {
+    background: #141414;
+    color: #e7e5df;
+}
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] h4,
+html[data-theme="dark"] h5,
+html[data-theme="dark"] h6 {
+    color: #fafaf7;
+}
+html[data-theme="dark"] p,
+html[data-theme="dark"] .about-text,
+html[data-theme="dark"] .content-main p,
+html[data-theme="dark"] .content-subtitle {
+    color: #cbc9c2;
+}
+html[data-theme="dark"] .footer,
+html[data-theme="dark"] .footer * {
+    background: #0a0a0a;
+    color: #9c9a93;
+    border-color: #2a2824;
+}
+html[data-theme="dark"] .footer h4,
+html[data-theme="dark"] .footer a {
+    color: #e7e5df;
+}
+html[data-theme="dark"] .footer a:hover { color: #fff; }
+
+/* Product cards */
+html[data-theme="dark"] .product-card {
+    background: #17171a;
+    color: #e7e5df;
+    border-color: #2a2824;
+}
+html[data-theme="dark"] .product-card h4 { color: #fafaf7; }
+html[data-theme="dark"] .product-card .product-category { color: #9c9a93; }
+html[data-theme="dark"] .product-card .product-price { color: #e7e5df; }
+html[data-theme="dark"] .product-placeholder { color: #3a3732; }
+html[data-theme="dark"] .product-badge {
+    background: #e7e5df;
+    color: #0a0a0a;
+}
+html[data-theme="dark"] .product-add {
+    background: #e7e5df;
+    color: #0a0a0a;
+}
+html[data-theme="dark"] .product-add:hover {
+    background: #fff;
+    color: #0a0a0a;
+}
+html[data-theme="dark"] .product-add.added {
+    background: #6aa87a;
+    color: #0a0a0a;
+}
+
+/* Buttons, CTAs */
+html[data-theme="dark"] .cta,
+html[data-theme="dark"] .hero-cta,
+html[data-theme="dark"] .newsletter-form button,
+html[data-theme="dark"] button.btn-primary,
+html[data-theme="dark"] .form-submit {
+    background: #e7e5df;
+    color: #0a0a0a;
+    border-color: #e7e5df;
+}
+html[data-theme="dark"] .cta:hover,
+html[data-theme="dark"] .hero-cta:hover,
+html[data-theme="dark"] .newsletter-form button:hover,
+html[data-theme="dark"] button.btn-primary:hover,
+html[data-theme="dark"] .form-submit:hover {
+    background: #fff;
+}
+
+/* Forms */
+html[data-theme="dark"] input[type="text"],
+html[data-theme="dark"] input[type="email"],
+html[data-theme="dark"] input[type="password"],
+html[data-theme="dark"] input[type="tel"],
+html[data-theme="dark"] input[type="number"],
+html[data-theme="dark"] input[type="search"],
+html[data-theme="dark"] input[type="date"],
+html[data-theme="dark"] select,
+html[data-theme="dark"] textarea {
+    background: #17171a;
+    color: #e7e5df;
+    border-color: #2a2824;
+}
+html[data-theme="dark"] input:focus,
+html[data-theme="dark"] select:focus,
+html[data-theme="dark"] textarea:focus {
+    border-color: #e7e5df;
+    outline: none;
+}
+html[data-theme="dark"] label { color: #9c9a93; }
+html[data-theme="dark"] ::placeholder { color: #6b6962; }
+
+/* Account modal */
+html[data-theme="dark"] .modal-overlay { background: rgba(0, 0, 0, 0.72); }
+html[data-theme="dark"] .modal {
+    background: #17171a;
+    color: #e7e5df;
+    border: 1px solid #2a2824;
+}
+html[data-theme="dark"] .modal-close { color: #e7e5df; }
+html[data-theme="dark"] .tab-btn {
+    color: #9c9a93;
+    border-bottom-color: transparent;
+}
+html[data-theme="dark"] .tab-btn.active {
+    color: #e7e5df;
+    border-bottom-color: #e7e5df;
+}
+html[data-theme="dark"] .form-sub,
+html[data-theme="dark"] .form-footer { color: #9c9a93; }
+
+/* Cart drawer */
+html[data-theme="dark"] .cart-drawer .cart-panel,
+html[data-theme="dark"] .cart-item {
+    background: #17171a;
+    color: #e7e5df;
+    border-color: #2a2824;
+}
+
+/* Search overlay */
+html[data-theme="dark"] .search-overlay {
+    background: rgba(14, 14, 14, 0.96);
+    color: #e7e5df;
+}
+html[data-theme="dark"] .search-input {
+    background: transparent;
+    color: #e7e5df;
+    border-color: #3a3732;
+}
+
+/* Newsletter */
+html[data-theme="dark"] .newsletter { background: #141414; }
+html[data-theme="dark"] .newsletter input {
+    background: #17171a;
+    color: #e7e5df;
+    border-color: #2a2824;
+}
+
+/* Contact form */
+html[data-theme="dark"] .contact-form,
+html[data-theme="dark"] .contact-channel {
+    background: #17171a;
+    border-color: #2a2824;
+    color: #e7e5df;
+}
+html[data-theme="dark"] .contact-form button[type="submit"] {
+    background: #e7e5df;
+    color: #0a0a0a;
+}
+
+/* Collection & category cards */
+html[data-theme="dark"] .collection-card,
+html[data-theme="dark"] .category-card {
+    background: #17171a;
+    border-color: #2a2824;
+    color: #e7e5df;
+}
+html[data-theme="dark"] .collection-card h3,
+html[data-theme="dark"] .category-card h3 { color: #fafaf7; }
+
+/* Cookie banner */
+html[data-theme="dark"] .cookie-banner,
+html[data-theme="dark"] .cookie-prefs-card {
+    background: #17171a;
+    color: #e7e5df;
+    border-color: #2a2824;
+}
+
+/* Horizontal rules, separators */
+html[data-theme="dark"] hr,
+html[data-theme="dark"] .divider { border-color: #2a2824; background: #2a2824; }
+
+/* Page progress bar */
+html[data-theme="dark"] .page-progress { background: #e7e5df; }
+
+/* Back-to-top button */
+html[data-theme="dark"] .back-to-top {
+    background: #17171a;
+    color: #e7e5df;
+    border-color: #2a2824;
+}
+html[data-theme="dark"] .back-to-top:hover { background: #2a2824; }
+
+/* Images — nudge down a touch in dark mode so they're less glaring */
+html[data-theme="dark"] img:not(.product-image):not([src*="logo"]) {
+    filter: brightness(0.92);
+}
+
+/* Inline logo — it's black text; swap to white in dark mode via CSS filter */
+html[data-theme="dark"] .nav-logo img,
+html[data-theme="dark"] .footer img[src*="logo"] {
+    filter: invert(1) brightness(1.05);
+}

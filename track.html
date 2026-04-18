@@ -276,6 +276,7 @@
             .track-result-header h2 { font-size: 24px; }
         }
     </style>
+    <script id="theme-early-apply">(function(){try{var t=localStorage.getItem("cartheon_theme");if(t!=="dark"&&t!=="light"){t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";}document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
 </head>
 <body>
     <!-- Skip link -->
@@ -573,5 +574,7 @@
     </script>
 
     <script src="cookie-banner.js" defer></script>
+    <script src="theme.js" defer></script>
+    <script src="auth-shared.js" defer></script>
 </body>
 </html>
