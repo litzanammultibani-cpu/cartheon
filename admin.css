@@ -1335,3 +1335,247 @@ button { font-family: inherit; }
 @media (max-width: 720px) {
     #fin-business-form .fin-form-grid { grid-template-columns: 1fr; }
 }
+
+/* ============================================================
+   ADMIN THEME TOGGLE BUTTONS
+   Positioned absolutely on auth cards; inline in the sidebar.
+   ============================================================ */
+.admin-theme-toggle {
+    background: transparent;
+    border: 1px solid transparent;
+    color: inherit;
+    cursor: pointer;
+    font-size: 1.1rem;
+    line-height: 1;
+    padding: 6px 10px;
+    border-radius: 0;
+    transition: border-color 0.18s, background 0.18s, color 0.18s;
+    font-family: inherit;
+}
+.admin-theme-toggle:hover { border-color: currentColor; }
+.admin-theme-toggle:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+
+/* On login cards: float top-right inside the card */
+.login-card { position: relative; }
+.login-card .admin-theme-toggle {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    color: var(--muted);
+}
+
+/* On sidebar: full-width-ish block */
+.sidebar-footer .sb-theme-toggle {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    padding: 8px 10px;
+    color: rgba(255,255,255,0.75);
+    border: 1px solid rgba(255,255,255,0.15);
+}
+.sidebar-footer .sb-theme-toggle:hover {
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    border-color: rgba(255,255,255,0.3);
+}
+
+/* ============================================================
+   DARK THEME — admin
+   admin.css uses CSS variables extensively, so we mainly flip them.
+   Extra overrides below patch hardcoded colors.
+   ============================================================ */
+html[data-theme="dark"] {
+    --bg: #0e0e0e;
+    --bg-2: #17171a;
+    --bg-3: #1f1e22;
+    --ink: #e7e5df;
+    --ink-2: #fafaf7;
+    --muted: #9c9a93;
+    --line: #2a2824;
+    --line-2: #3a3732;
+    --accent: #e7e5df;
+    --danger: #d96058;
+    --ok: #6aa87a;
+}
+html[data-theme="dark"] body {
+    background: var(--bg);
+    color: var(--ink);
+}
+
+/* Primary buttons: keep the inverse look but with lighter-on-dark contrast */
+html[data-theme="dark"] .btn-primary {
+    background: var(--ink);
+    color: #0a0a0a;
+    border: 1px solid var(--ink);
+}
+html[data-theme="dark"] .btn-primary:hover {
+    background: transparent;
+    color: var(--ink);
+}
+html[data-theme="dark"] .btn-outline {
+    color: var(--ink);
+    border-color: var(--ink);
+}
+html[data-theme="dark"] .btn-outline:hover {
+    background: var(--ink);
+    color: #0a0a0a;
+}
+html[data-theme="dark"] .btn-small {
+    color: var(--ink);
+    border-color: var(--line-2);
+}
+html[data-theme="dark"] .btn-small:hover {
+    background: var(--ink);
+    color: #0a0a0a;
+    border-color: var(--ink);
+}
+
+/* Login cards */
+html[data-theme="dark"] .login-screen {
+    background: linear-gradient(135deg, #0a0a0a 0%, #141416 100%);
+}
+html[data-theme="dark"] .login-card {
+    background: #17171a;
+    border: 1px solid #2a2824;
+    color: var(--ink);
+}
+html[data-theme="dark"] .login-logo { color: var(--ink); }
+html[data-theme="dark"] .login-sub,
+html[data-theme="dark"] .login-hint { color: var(--muted); }
+html[data-theme="dark"] .login-form label { color: var(--muted); }
+html[data-theme="dark"] .login-form input {
+    background: #0e0e0e;
+    color: var(--ink);
+    border-color: var(--line);
+}
+html[data-theme="dark"] .login-form input:focus { border-color: var(--ink); }
+html[data-theme="dark"] .login-back { color: var(--muted); }
+html[data-theme="dark"] .login-back:hover { color: var(--ink); }
+
+/* Stat cards & tables */
+html[data-theme="dark"] .stat-card,
+html[data-theme="dark"] .pending-approvals,
+html[data-theme="dark"] .roles-reference,
+html[data-theme="dark"] .role-card,
+html[data-theme="dark"] .table-wrap,
+html[data-theme="dark"] .data-table,
+html[data-theme="dark"] .settings-panel {
+    background: var(--bg-2);
+    color: var(--ink);
+    border-color: var(--line);
+}
+html[data-theme="dark"] .data-table th {
+    background: var(--bg-3);
+    color: var(--muted);
+    border-bottom-color: var(--line-2);
+}
+html[data-theme="dark"] .data-table tr { border-bottom-color: var(--line); }
+html[data-theme="dark"] .data-table tr:hover { background: var(--bg-3); }
+
+/* Inputs / forms throughout the shell */
+html[data-theme="dark"] input[type="text"],
+html[data-theme="dark"] input[type="email"],
+html[data-theme="dark"] input[type="password"],
+html[data-theme="dark"] input[type="tel"],
+html[data-theme="dark"] input[type="number"],
+html[data-theme="dark"] input[type="search"],
+html[data-theme="dark"] input[type="date"],
+html[data-theme="dark"] input[type="url"],
+html[data-theme="dark"] select,
+html[data-theme="dark"] textarea {
+    background: #0e0e0e;
+    color: var(--ink);
+    border-color: var(--line);
+}
+html[data-theme="dark"] input:focus,
+html[data-theme="dark"] select:focus,
+html[data-theme="dark"] textarea:focus {
+    border-color: var(--ink);
+    outline: none;
+}
+html[data-theme="dark"] ::placeholder { color: #6b6962; }
+
+/* Modals */
+html[data-theme="dark"] .modal,
+html[data-theme="dark"] #order-modal > div,
+html[data-theme="dark"] #product-modal > div,
+html[data-theme="dark"] #team-modal > div,
+html[data-theme="dark"] .fin-modal-card {
+    background: var(--bg-2);
+    color: var(--ink);
+    border: 1px solid var(--line);
+}
+html[data-theme="dark"] .fin-modal { background: rgba(0,0,0,0.75); }
+
+/* Fin cards */
+html[data-theme="dark"] .fin-card {
+    background: var(--bg-2);
+    border-color: var(--line);
+    color: var(--ink);
+}
+html[data-theme="dark"] .fin-card-label,
+html[data-theme="dark"] .fin-card-hint { color: var(--muted); }
+html[data-theme="dark"] .fin-card-value { color: var(--ink); }
+html[data-theme="dark"] .fin-card-dark {
+    background: #050505;
+    border-color: #2a2824;
+    color: var(--ink);
+}
+html[data-theme="dark"] .fin-box {
+    background: var(--bg-2);
+    border-color: var(--line);
+}
+html[data-theme="dark"] .mini-table td { border-bottom-color: var(--line); }
+
+/* Fin tabs */
+html[data-theme="dark"] .fin-tabs { border-bottom-color: var(--line); }
+html[data-theme="dark"] .fin-tab { color: var(--muted); }
+html[data-theme="dark"] .fin-tab:hover { color: var(--ink); }
+html[data-theme="dark"] .fin-tab.active { color: var(--ink); border-bottom-color: var(--ink); }
+html[data-theme="dark"] .fin-hint { color: var(--muted); }
+html[data-theme="dark"] .fin-hint code { background: var(--bg-3); color: var(--ink); }
+
+/* Period selector */
+html[data-theme="dark"] .fin-period label { color: var(--muted); }
+html[data-theme="dark"] .fin-period select {
+    background: var(--bg-2);
+    color: var(--ink);
+    border-color: var(--line);
+}
+html[data-theme="dark"] .fin-period-range { color: var(--ink); }
+
+/* COGS */
+html[data-theme="dark"] #fin-cogs-table .cogs-input {
+    background: var(--bg-3);
+    color: var(--ink);
+    border-color: var(--line);
+}
+
+/* Row buttons */
+html[data-theme="dark"] .btn-row {
+    color: var(--ink);
+    border-color: var(--line);
+    background: transparent;
+}
+html[data-theme="dark"] .btn-row:hover {
+    background: var(--bg-3);
+    border-color: var(--ink);
+}
+
+/* Role pills, status dots, etc. remain readable since they use solid backgrounds */
+
+/* View headers */
+html[data-theme="dark"] .view-header h1 { color: var(--ink); }
+html[data-theme="dark"] .view-header p { color: var(--muted); }
+
+/* Empty-row / muted helpers */
+html[data-theme="dark"] .empty-row { color: var(--muted); }
+html[data-theme="dark"] .muted { color: var(--muted); }
+
+/* Settings grid cards */
+html[data-theme="dark"] .settings-card {
+    background: var(--bg-2);
+    border-color: var(--line);
+    color: var(--ink);
+}
+html[data-theme="dark"] .settings-hint { color: var(--muted); }
