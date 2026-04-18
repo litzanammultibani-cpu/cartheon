@@ -504,6 +504,31 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         showLogin();
     }
+
+    // Cross-link between setup and login screens (user-requested: show both options)
+    const gotoLogin = document.getElementById('setup-goto-login');
+    if (gotoLogin) gotoLogin.addEventListener('click', (e) => {
+        e.preventDefault();
+        const us = getUsers();
+        if (us.length === 0) {
+            const err = document.getElementById('setup-error');
+            if (err) err.textContent = 'No admin account exists yet. Create one below.';
+            return;
+        }
+        showLogin();
+    });
+
+    const gotoSetup = document.getElementById('login-goto-setup');
+    if (gotoSetup) gotoSetup.addEventListener('click', (e) => {
+        e.preventDefault();
+        const us = getUsers();
+        if (us.length > 0) {
+            const err = document.getElementById('login-error');
+            if (err) err.textContent = 'Admin account already exists. Sign in, then use the Team tab to add another admin.';
+            return;
+        }
+        showSetup();
+    });
 });
 
 function hideAllScreens() {
@@ -817,6 +842,18 @@ function showAdmin() {
 
     // Order modal
     $('#order-modal-close').addEventListener('click', () => $('#order-modal').classList.add('hidden'));
+
+    // Customer creation modal (admin-only)
+    const addCustomerBtn = $('#add-customer-btn');
+    if (addCustomerBtn) {
+        addCustomerBtn.addEventListener('click', () => {
+            if (session.role !== 'admin' && session.role !== 'manager') {
+                alert('Only admins and managers can create customer logins.');
+                return;
+            }
+            openCustomerCreateModal();
+        });
+    }
 
     // Team modal
     $('#add-team-btn').addEventListener('click', () => {
@@ -1909,4 +1946,124 @@ function formatDate(ts) {
     const d = new Date(ts);
     return d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
          + ' ' + d.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+}
+
+/* =========================================================
+   CUSTOMER CREATION (admin-only)
+   Adds a customer login to cartheon_users using the same format
+   as auth-shared.js and account.html (SHA-256 + per-user salt).
+   ========================================================= */
+async function __cartheon_sha256Hex(str) {
+    const buf = new TextEncoder().encode(str);
+    const hash = await crypto.subtle.digest('SHA-256', buf);
+    return Array.from(new Uint8Array(hash))
+        .map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+function __cartheon_randomPassword(len) {
+    const chars = 'abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    const out = new Uint8Array(len || 12);
+    crypto.getRandomValues(out);
+    return Array.from(out).map(b => chars[b % chars.length]).join('');
+}
+
+function openCustomerCreateModal() {
+    // Remove any existing one
+    const existing = document.getElementById('cust-create-modal');
+    if (existing) existing.remove();
+
+    const modal = document.createElement('div');
+    modal.id = 'cust-create-modal';
+    modal.className = 'fin-modal';
+    modal.innerHTML = `
+        <div class="fin-modal-card" style="max-width:500px;">
+            <h3>Create customer login</h3>
+            <p style="font-size:0.85rem;color:#666;margin-bottom:20px;">The customer will be able to sign in at <code>/account.html</code> with this email and password. Share credentials with them manually (email, SMS, in person).</p>
+            <form id="cust-create-form">
+                <div class="fin-form-grid">
+                    <label class="fin-form-wide">First name
+                        <input type="text" name="name" required autocomplete="off" placeholder="e.g. Alexandra">
+                    </label>
+                    <label class="fin-form-wide">Email
+                        <input type="email" name="email" required autocomplete="off" placeholder="customer@example.com">
+                    </label>
+                    <label class="fin-form-wide">Password
+                        <input type="text" name="password" required minlength="6" autocomplete="off" id="cust-create-pass" placeholder="at least 6 characters">
+                    </label>
+                </div>
+                <p style="margin:-8px 0 14px;">
+                    <button type="button" id="cust-gen-pass" style="background:transparent;border:1px solid #d7d3ca;padding:6px 12px;font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;">Generate strong password</button>
+                </p>
+                <div class="login-error" id="cust-create-err" style="margin-bottom:10px;"></div>
+                <div class="fin-form-actions">
+                    <button type="button" class="btn-secondary" id="cust-create-cancel">Cancel</button>
+                    <button type="submit" class="btn-primary">Create login</button>
+                </div>
+            </form>
+        </div>`;
+    document.body.appendChild(modal);
+
+    const close = () => modal.remove();
+    modal.addEventListener('click', e => { if (e.target === modal) close(); });
+    modal.querySelector('#cust-create-cancel').addEventListener('click', close);
+    modal.querySelector('#cust-gen-pass').addEventListener('click', () => {
+        modal.querySelector('#cust-create-pass').value = __cartheon_randomPassword(12);
+    });
+
+    modal.querySelector('#cust-create-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const err = modal.querySelector('#cust-create-err');
+        err.textContent = '';
+        const data = Object.fromEntries(new FormData(e.target));
+        const name  = (data.name || '').trim();
+        const email = (data.email || '').trim().toLowerCase();
+        const pass  = data.password || '';
+        if (!name || !email || !pass) { err.textContent = 'All fields are required.'; return; }
+        if (pass.length < 6)           { err.textContent = 'Password must be at least 6 characters.'; return; }
+        if (!/.+@.+\..+/.test(email))  { err.textContent = 'Please enter a valid email.'; return; }
+        const list = JSON.parse(localStorage.getItem('cartheon_users') || '[]');
+        if (list.some(u => (u.email || '').toLowerCase() === email)) {
+            err.textContent = 'A customer with that email already exists.';
+            return;
+        }
+
+        const submit = e.target.querySelector('button[type="submit"]');
+        submit.disabled = true;
+        const oldText = submit.textContent;
+        submit.textContent = 'Creating…';
+        try {
+            const saltBytes = crypto.getRandomValues(new Uint8Array(16));
+            const salt = Array.from(saltBytes).map(b => b.toString(16).padStart(2, '0')).join('');
+            const hash = await __cartheon_sha256Hex(pass + salt);
+            list.push({
+                name, email, salt, hash,
+                createdAt: Date.now(),
+                createdByAdmin: true
+            });
+            localStorage.setItem('cartheon_users', JSON.stringify(list));
+
+            // Success: show credentials summary so admin can copy & share
+            modal.querySelector('.fin-modal-card').innerHTML = `
+                <h3>Customer login created ✓</h3>
+                <p style="font-size:0.88rem;color:#333;margin-bottom:18px;">Copy these credentials and share them with the customer. The password cannot be retrieved later (it's hashed) — if lost, create a new account.</p>
+                <div style="background:#fbf7f0;border:1px solid #e6dcc7;padding:18px;margin-bottom:22px;font-family:monospace;font-size:0.92rem;line-height:1.7;">
+                    <div><strong>Name:</strong> ${escapeHtml(name)}</div>
+                    <div><strong>Email:</strong> ${escapeHtml(email)}</div>
+                    <div><strong>Password:</strong> ${escapeHtml(pass)}</div>
+                    <div><strong>Login URL:</strong> /account.html</div>
+                </div>
+                <div class="fin-form-actions">
+                    <button type="button" class="btn-primary" id="cust-create-done">Done</button>
+                </div>`;
+            modal.querySelector('#cust-create-done').addEventListener('click', () => {
+                close();
+                renderCustomers();
+                renderDashboard();
+            });
+        } catch (ex) {
+            submit.disabled = false;
+            submit.textContent = oldText;
+            err.textContent = 'Failed: ' + ex.message;
+        }
+    });
 }

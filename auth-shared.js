@@ -46,10 +46,6 @@
 <div class="modal-overlay" id="account-overlay" aria-hidden="true">
     <div class="modal" role="dialog" aria-labelledby="account-title" aria-modal="true">
         <button class="modal-close" id="account-close" aria-label="Close account modal">&times;</button>
-        <div class="account-tabs" role="tablist">
-            <button class="tab-btn active" data-tab="signin" role="tab" aria-selected="true">SIGN IN</button>
-            <button class="tab-btn" data-tab="register" role="tab" aria-selected="false">REGISTER</button>
-        </div>
         <form class="account-form" id="signin-form" data-form="signin">
             <h2 id="account-title">Welcome back</h2>
             <p class="form-sub">Sign in to your CARTHEON account.</p>
@@ -57,15 +53,7 @@
             <label>Password<input type="password" required placeholder="••••••••" autocomplete="current-password"></label>
             <button type="submit" class="form-submit">SIGN IN</button>
             <p class="form-footer auth-err" id="auth-err-signin"></p>
-        </form>
-        <form class="account-form hidden" id="register-form" data-form="register">
-            <h2>Create an account</h2>
-            <p class="form-sub">Join the CARTHEON circle.</p>
-            <label>First name<input type="text" required placeholder="Alexandru" autocomplete="given-name"></label>
-            <label>Email<input type="email" required placeholder="you@example.com" autocomplete="email"></label>
-            <label>Password<input type="password" required minlength="6" placeholder="at least 6 characters" autocomplete="new-password"></label>
-            <button type="submit" class="form-submit">CREATE ACCOUNT</button>
-            <p class="form-footer auth-err" id="auth-err-register"></p>
+            <p class="form-footer" style="margin-top:16px;font-size:0.78rem;color:#888;">Accounts at CARTHEON are invitation-only. Contact <a href="mailto:hello@cartheon.store">hello@cartheon.store</a> for access.</p>
         </form>
         <div class="form-success hidden" id="form-success" role="status" aria-live="polite">
             <h2>Welcome, <span id="user-name">friend</span>.</h2>
@@ -115,27 +103,18 @@
     }
 
     function showTab(which) {
-        $$('.tab-btn').forEach(b => {
-            const active = b.dataset.tab === which;
-            b.classList.toggle('active', active);
-            b.setAttribute('aria-selected', String(active));
-        });
-        const signin   = $('#signin-form');
-        const register = $('#register-form');
-        const success  = $('#form-success');
-        if (signin) signin.classList.toggle('hidden', which !== 'signin');
-        if (register) register.classList.toggle('hidden', which !== 'register');
+        // Only 'signin' is supported publicly — register is admin-only.
+        const signin  = $('#signin-form');
+        const success = $('#form-success');
+        if (signin) signin.classList.remove('hidden');
         if (success) success.classList.add('hidden');
-        // Clear any error messages
         $$('.auth-err').forEach(e => { e.textContent = ''; });
     }
 
     function showSignedIn(user) {
-        const signin   = $('#signin-form');
-        const register = $('#register-form');
-        const success  = $('#form-success');
+        const signin  = $('#signin-form');
+        const success = $('#form-success');
         if (signin) signin.classList.add('hidden');
-        if (register) register.classList.add('hidden');
         if (success) {
             success.classList.remove('hidden');
             const nameSpan = $('#user-name');
@@ -176,36 +155,7 @@
         showSignedIn(session);
     }
 
-    async function handleRegister(e) {
-        e.preventDefault();
-        const form = e.target;
-        const [nameEl, emailEl, passEl] = form.querySelectorAll('input');
-        const name = (nameEl.value || '').trim();
-        const email = (emailEl.value || '').trim().toLowerCase();
-        const pass = passEl.value;
-        if (!name || !email || !pass) return;
-        if (pass.length < 6) return showError('register', 'Password must be at least 6 characters.');
-        let users = [];
-        try { users = JSON.parse(localStorage.getItem(STORAGE_USERS)) || []; } catch (err) {}
-        if (users.some(u => (u.email || '').toLowerCase() === email)) {
-            return showError('register', 'An account with that email already exists. Sign in instead.');
-        }
-        const salt = crypto.getRandomValues(new Uint8Array(16));
-        const saltHex = Array.from(salt).map(b => b.toString(16).padStart(2, '0')).join('');
-        const hash = await sha256Hex(pass + saltHex);
-        users.push({
-            name: name,
-            email: email,
-            salt: saltHex,
-            hash: hash,
-            createdAt: Date.now()
-        });
-        localStorage.setItem(STORAGE_USERS, JSON.stringify(users));
-        const session = { name: name, email: email };
-        saveStoredUser(session);
-        updateAccountBadges();
-        showSignedIn(session);
-    }
+    // Registration is admin-only now (done from the admin Customers view).
 
     function wireModal() {
         // Don't double-wire on pages where script.js already handles things — but
@@ -220,16 +170,9 @@
         overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
         document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 
-        // Tab switches
-        $$('.tab-btn').forEach(btn => {
-            btn.addEventListener('click', () => showTab(btn.dataset.tab));
-        });
-
         // Forms — capture phase so we win over any existing plain-text handler
         const signin = $('#signin-form');
-        const register = $('#register-form');
         if (signin) signin.addEventListener('submit', handleSignIn, true);
-        if (register) register.addEventListener('submit', handleRegister, true);
     }
 
     function wireNavTriggers() {
