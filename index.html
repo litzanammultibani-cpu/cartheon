@@ -163,7 +163,7 @@
     <section class="collections" id="collections" aria-labelledby="collections-title">
         <h2 class="section-title" id="collections-title">The Collections</h2>
         <div class="collections-grid">
-            <div class="collection-card" tabindex="0">
+            <div class="collection-card" tabindex="0" role="button" data-collection="essential" aria-label="Filter shop by Essential collection">
                 <div class="collection-image" style="background: linear-gradient(135deg, #e8e8e8 0%, #c0c0c0 100%);">
                     <svg class="collection-mono" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
                         <circle cx="50" cy="50" r="32" fill="none" stroke="#fafaf7" stroke-width="1"/>
@@ -173,7 +173,7 @@
                 <h3>Essential</h3>
                 <p>Minimalist everyday pieces</p>
             </div>
-            <div class="collection-card" tabindex="0">
+            <div class="collection-card" tabindex="0" role="button" data-collection="signature" aria-label="Filter shop by Signature collection">
                 <div class="collection-image" style="background: linear-gradient(135deg, #d4d4d4 0%, #a8a8a8 100%);">
                     <svg class="collection-mono" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
                         <path d="M50 20 L78 50 L50 80 L22 50 Z" fill="none" stroke="#fafaf7" stroke-width="1"/>
@@ -183,7 +183,7 @@
                 <h3>Signature</h3>
                 <p>Statement chains &amp; cuffs</p>
             </div>
-            <div class="collection-card" tabindex="0">
+            <div class="collection-card" tabindex="0" role="button" data-collection="eclat" aria-label="Filter shop by Éclat collection">
                 <div class="collection-image" style="background: linear-gradient(135deg, #f0f0f0 0%, #b8b8b8 100%);">
                     <svg class="collection-mono" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
                         <path d="M50 18 L62 50 L50 82 L38 50 Z" fill="none" stroke="#fafaf7" stroke-width="1"/>
@@ -200,8 +200,12 @@
     <!-- Shop / Products -->
     <section class="shop" id="shop" aria-labelledby="shop-title">
         <h2 class="section-title" id="shop-title">Best Sellers</h2>
+        <div class="shop-filter-bar" id="shop-filter-bar" hidden>
+            <span>Showing <strong id="shop-filter-label"></strong></span>
+            <button type="button" id="shop-filter-clear" aria-label="Clear filter">× Clear filter</button>
+        </div>
         <div class="products-grid">
-            <div class="product-card" data-id="celeste-chain" data-name="Céleste Chain Bracelet" data-price="34.00" data-category="Sterling Silver">
+            <div class="product-card" data-id="celeste-chain" data-name="Céleste Chain Bracelet" data-price="34.00" data-category="Sterling Silver" data-collection="essential">
                 <div class="product-image" style="background: linear-gradient(135deg, #f5f5f5 0%, #d0d0d0 100%);">
                     <span class="product-placeholder">⌒</span>
                     <span class="product-badge">NEW</span>
@@ -211,7 +215,7 @@
                 <p class="product-category">Sterling Silver</p>
                 <p class="product-price">€34.00</p>
             </div>
-            <div class="product-card" data-id="infiniti-cuff" data-name="Infiniti Cuff" data-price="42.00" data-category="925 Silver">
+            <div class="product-card" data-id="infiniti-cuff" data-name="Infiniti Cuff" data-price="42.00" data-category="925 Silver" data-collection="signature">
                 <div class="product-image" style="background: linear-gradient(135deg, #eeeeee 0%, #b0b0b0 100%);">
                     <span class="product-placeholder">∞</span>
                     <button class="product-add" aria-label="Add Infiniti Cuff to bag">ADD TO BAG</button>
@@ -220,7 +224,7 @@
                 <p class="product-category">925 Silver</p>
                 <p class="product-price">€42.00</p>
             </div>
-            <div class="product-card" data-id="aurora-bangle" data-name="Aurora Bangle" data-price="28.00" data-category="Polished Silver">
+            <div class="product-card" data-id="aurora-bangle" data-name="Aurora Bangle" data-price="28.00" data-category="Polished Silver" data-collection="essential">
                 <div class="product-image" style="background: linear-gradient(135deg, #f0f0f0 0%, #c4c4c4 100%);">
                     <span class="product-placeholder">○</span>
                     <span class="product-badge">BESTSELLER</span>
@@ -230,7 +234,7 @@
                 <p class="product-category">Polished Silver</p>
                 <p class="product-price">€28.00</p>
             </div>
-            <div class="product-card" data-id="etoile-charm" data-name="Étoile Charm Bracelet" data-price="38.00" data-category="Sterling Silver">
+            <div class="product-card" data-id="etoile-charm" data-name="Étoile Charm Bracelet" data-price="38.00" data-category="Sterling Silver" data-collection="signature">
                 <div class="product-image" style="background: linear-gradient(135deg, #e5e5e5 0%, #a5a5a5 100%);">
                     <span class="product-placeholder">✦</span>
                     <button class="product-add" aria-label="Add Étoile Charm Bracelet to bag">ADD TO BAG</button>
@@ -239,7 +243,7 @@
                 <p class="product-category">Sterling Silver</p>
                 <p class="product-price">€38.00</p>
             </div>
-            <div class="product-card" data-id="lune-tennis" data-name="Lune Tennis Bracelet" data-price="52.00" data-category="925 Silver · Zirconia">
+            <div class="product-card" data-id="lune-tennis" data-name="Lune Tennis Bracelet" data-price="52.00" data-category="925 Silver · Zirconia" data-collection="eclat">
                 <div class="product-image" style="background: linear-gradient(135deg, #ececec 0%, #b8b8b8 100%);">
                     <span class="product-placeholder">◐</span>
                     <button class="product-add" aria-label="Add Lune Tennis Bracelet to bag">ADD TO BAG</button>
@@ -248,7 +252,7 @@
                 <p class="product-category">925 Silver · Zirconia</p>
                 <p class="product-price">€52.00</p>
             </div>
-            <div class="product-card" data-id="mira-paperclip" data-name="Mira Paperclip Chain" data-price="36.00" data-category="Sterling Silver">
+            <div class="product-card" data-id="mira-paperclip" data-name="Mira Paperclip Chain" data-price="36.00" data-category="Sterling Silver" data-collection="signature">
                 <div class="product-image" style="background: linear-gradient(135deg, #f2f2f2 0%, #c8c8c8 100%);">
                     <span class="product-placeholder">◇</span>
                     <span class="product-badge">NEW</span>
@@ -258,7 +262,7 @@
                 <p class="product-category">Sterling Silver</p>
                 <p class="product-price">€36.00</p>
             </div>
-            <div class="product-card" data-id="solis-beaded" data-name="Sólis Beaded Bracelet" data-price="26.00" data-category="Silver Beads">
+            <div class="product-card" data-id="solis-beaded" data-name="Sólis Beaded Bracelet" data-price="26.00" data-category="Silver Beads" data-collection="essential">
                 <div class="product-image" style="background: linear-gradient(135deg, #e8e8e8 0%, #b5b5b5 100%);">
                     <span class="product-placeholder">◉</span>
                     <button class="product-add" aria-label="Add Sólis Beaded Bracelet to bag">ADD TO BAG</button>
@@ -267,7 +271,7 @@
                 <p class="product-category">Silver Beads</p>
                 <p class="product-price">€26.00</p>
             </div>
-            <div class="product-card" data-id="sienna-heart" data-name="Sienna Heart Bracelet" data-price="32.00" data-category="Polished Silver">
+            <div class="product-card" data-id="sienna-heart" data-name="Sienna Heart Bracelet" data-price="32.00" data-category="Polished Silver" data-collection="essential">
                 <div class="product-image" style="background: linear-gradient(135deg, #efefef 0%, #c0c0c0 100%);">
                     <span class="product-placeholder">❉</span>
                     <button class="product-add" aria-label="Add Sienna Heart Bracelet to bag">ADD TO BAG</button>

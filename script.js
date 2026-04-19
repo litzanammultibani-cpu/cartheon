@@ -459,6 +459,59 @@ document.addEventListener('DOMContentLoaded', () => {
             </a>`).join('');
     })();
 
+    /* ============ Collection card filter ============ */
+    (function collectionFilter() {
+        const cards = $$('.collection-card[data-collection]');
+        if (!cards.length) return;
+        const shopSection = $('#shop');
+        const title = $('#shop-title');
+        const bar = $('#shop-filter-bar');
+        const labelEl = $('#shop-filter-label');
+        const clearBtn = $('#shop-filter-clear');
+        if (!shopSection || !bar) return;
+
+        const COLLECTION_NAMES = {
+            essential: 'Essential',
+            signature: 'Signature',
+            eclat: 'Éclat'
+        };
+
+        const productCards = $$('.product-card[data-collection]');
+
+        function apply(collection) {
+            if (!collection) return clear();
+            let shown = 0;
+            productCards.forEach(c => {
+                const match = c.dataset.collection === collection;
+                c.style.display = match ? '' : 'none';
+                if (match) shown++;
+            });
+            bar.hidden = false;
+            labelEl.textContent = (COLLECTION_NAMES[collection] || collection) + ' · ' + shown + ' piece' + (shown === 1 ? '' : 's');
+            if (title) title.textContent = COLLECTION_NAMES[collection] || 'Collection';
+            cards.forEach(c => c.classList.toggle('is-active-collection', c.dataset.collection === collection));
+            // Scroll to shop
+            shopSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function clear() {
+            productCards.forEach(c => { c.style.display = ''; });
+            bar.hidden = true;
+            if (title) title.textContent = 'Best Sellers';
+            cards.forEach(c => c.classList.remove('is-active-collection'));
+        }
+
+        cards.forEach(c => {
+            c.style.cursor = 'pointer';
+            const activate = () => apply(c.dataset.collection);
+            c.addEventListener('click', activate);
+            c.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); }
+            });
+        });
+        if (clearBtn) clearBtn.addEventListener('click', clear);
+    })();
+
     function addToCart(product) {
         const existing = cart.find(i => i.id === product.id);
         if (existing) existing.qty += 1;

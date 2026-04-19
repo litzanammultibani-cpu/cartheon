@@ -11,10 +11,15 @@
     if (window.CartheonProducts) return;
 
     // Default catalog — mirrors index.html static cards
+    // `collection` tags group pieces into the three named collections on the homepage:
+    //   essential  — minimalist everyday pieces
+    //   signature  — statement chains & cuffs
+    //   eclat      — limited edition luxury
     const DEFAULT_CATALOG = [
         {
             id: 'celeste-chain', name: 'Céleste Chain Bracelet', price: 34.00,
             category: 'Sterling Silver', symbol: '⌒', badge: 'NEW',
+            collection: 'essential',
             description: 'A delicate, everyday chain bracelet in 925 sterling silver. Cable-link weave, box clasp, finished by hand in Strasbourg.',
             details: { material: '925 Sterling Silver', length: '16 cm + 3 cm extender', weight: '2.1 g', finish: 'Hand-polished' },
             gradient: 'linear-gradient(135deg, #f5f5f5 0%, #d0d0d0 100%)'
@@ -22,6 +27,7 @@
         {
             id: 'infiniti-cuff', name: 'Infiniti Cuff', price: 42.00,
             category: '925 Silver', symbol: '∞',
+            collection: 'signature',
             description: 'A sculpted infinity cuff in 925 silver — open, adjustable, and engineered to sit cleanly on the wrist.',
             details: { material: '925 Sterling Silver', length: 'Adjustable 15–18 cm', weight: '8.3 g', finish: 'Mirror polish' },
             gradient: 'linear-gradient(135deg, #eeeeee 0%, #b0b0b0 100%)'
@@ -29,6 +35,7 @@
         {
             id: 'aurora-bangle', name: 'Aurora Bangle', price: 28.00,
             category: 'Polished Silver', symbol: '○', badge: 'BESTSELLER',
+            collection: 'essential',
             description: 'Mirror-polished bangle with a seamless closure. Slim, round, and a CARTHEON bestseller.',
             details: { material: '925 Sterling Silver', diameter: '62 mm', weight: '6.7 g', finish: 'High polish' },
             gradient: 'linear-gradient(135deg, #f0f0f0 0%, #c4c4c4 100%)'
@@ -36,6 +43,7 @@
         {
             id: 'etoile-charm', name: 'Étoile Charm Bracelet', price: 38.00,
             category: 'Sterling Silver', symbol: '✦',
+            collection: 'signature',
             description: 'A cast silver star charm on a fine chain. Understated sparkle, perfect for stacking.',
             details: { material: '925 Sterling Silver', length: '16 cm + 3 cm extender', weight: '2.8 g', finish: 'Satin + polished charm' },
             gradient: 'linear-gradient(135deg, #e5e5e5 0%, #a5a5a5 100%)'
@@ -43,6 +51,7 @@
         {
             id: 'lune-tennis', name: 'Lune Tennis Bracelet', price: 52.00,
             category: '925 Silver · Zirconia', symbol: '◐',
+            collection: 'eclat',
             description: 'Classic tennis bracelet set with brilliant-cut cubic zirconia on 925 silver. The statement piece of the line.',
             details: { material: '925 Sterling Silver', length: '18 cm', stones: 'Cubic zirconia, 2 mm', weight: '9.4 g' },
             gradient: 'linear-gradient(135deg, #ececec 0%, #b8b8b8 100%)'
@@ -50,6 +59,7 @@
         {
             id: 'mira-paperclip', name: 'Mira Paperclip Chain', price: 36.00,
             category: 'Sterling Silver', symbol: '◇', badge: 'NEW',
+            collection: 'signature',
             description: 'Modern elongated-link chain — bold without being heavy. Unisex and designed to layer.',
             details: { material: '925 Sterling Silver', length: '17 cm', weight: '4.1 g', finish: 'Polished' },
             gradient: 'linear-gradient(135deg, #f2f2f2 0%, #c8c8c8 100%)'
@@ -57,6 +67,7 @@
         {
             id: 'solis-beaded', name: 'Sólis Beaded Bracelet', price: 26.00,
             category: 'Silver Beads', symbol: '◉',
+            collection: 'essential',
             description: 'Hand-strung silver beads on an elastic cord. The casual piece — wear it alone or stack it.',
             details: { material: '925 Silver beads, elastic cord', circumference: 'Stretch, fits 15–19 cm', weight: '5.2 g' },
             gradient: 'linear-gradient(135deg, #e8e8e8 0%, #b5b5b5 100%)'
@@ -64,6 +75,7 @@
         {
             id: 'sienna-heart', name: 'Sienna Heart Bracelet', price: 32.00,
             category: 'Polished Silver', symbol: '❉',
+            collection: 'essential',
             description: 'A small polished heart pendant on a fine chain. Our go-to romance gift.',
             details: { material: '925 Sterling Silver', length: '16 cm + 3 cm extender', weight: '2.4 g' },
             gradient: 'linear-gradient(135deg, #efefef 0%, #c0c0c0 100%)'

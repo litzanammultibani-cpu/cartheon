@@ -2373,3 +2373,68 @@ html[data-theme="dark"] .rv-thumb { color: rgba(255,255,255,0.12); }
     font-variant-numeric: tabular-nums;
     font-size: 0.95rem;
 }
+
+/* ============================================================
+   SHOP FILTER BAR + ACTIVE COLLECTION HIGHLIGHT
+   ============================================================ */
+.shop-filter-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    max-width: 900px;
+    margin: 0 auto 30px;
+    padding: 14px 20px;
+    background: #fbf7f0;
+    border: 1px solid #e6dcc7;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    color: #444;
+}
+html[data-theme="dark"] .shop-filter-bar {
+    background: #1f1e22;
+    border-color: #2a2824;
+    color: #cbc9c2;
+}
+.shop-filter-bar strong {
+    color: #0a0a0a;
+    letter-spacing: 0.04em;
+}
+html[data-theme="dark"] .shop-filter-bar strong { color: #fafaf7; }
+.shop-filter-bar button {
+    background: transparent;
+    border: 1px solid #d7d3ca;
+    color: inherit;
+    padding: 7px 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.18s, border-color 0.18s;
+}
+.shop-filter-bar button:hover {
+    background: #0a0a0a;
+    color: #fafaf7;
+    border-color: #0a0a0a;
+}
+html[data-theme="dark"] .shop-filter-bar button { border-color: #3a3732; }
+html[data-theme="dark"] .shop-filter-bar button:hover {
+    background: #e7e5df;
+    color: #0a0a0a;
+    border-color: #e7e5df;
+}
+
+/* Clickable collection cards */
+.collection-card {
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.collection-card:hover { transform: translateY(-3px); }
+.collection-card:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.collection-card.is-active-collection .collection-image {
+    box-shadow: 0 0 0 2px #0a0a0a inset;
+}
+html[data-theme="dark"] .collection-card.is-active-collection .collection-image {
+    box-shadow: 0 0 0 2px #e7e5df inset;
+}
