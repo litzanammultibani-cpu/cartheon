@@ -7,7 +7,7 @@
     <meta name="referrer" content="no-referrer">
     <title>VAIYN · Admin</title>
     <!-- Apply saved theme before paint to avoid FOUC -->
-    <script id="theme-early-apply">(function(){try{var t=localStorage.getItem("vaiyn_theme");if(t!=="dark"&&t!=="light"){t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";}document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+    <script id="theme-early-apply">(function(){try{var t=localStorage.getItem("vaiyn_theme");if(t!=="dark"&&t!=="light")t="dark";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -21,7 +21,6 @@
     <!-- ============ FIRST-RUN SETUP ============ -->
     <div class="login-screen hidden" id="setup-screen">
         <div class="login-card">
-            <button type="button" class="admin-theme-toggle" aria-label="Toggle theme" title="Toggle theme">☾</button>
             <div class="login-logo">VAIYN</div>
             <p class="login-sub">Create Admin Account</p>
             <p class="login-hint" style="margin: 0 0 28px;">Set up your admin credentials. Your password is hashed with PBKDF2 (200,000 iterations) and stored locally — never sent anywhere. The email is used only for password recovery.</p>
@@ -48,7 +47,6 @@
     <!-- ============ LOGIN SCREEN ============ -->
     <div class="login-screen hidden" id="login-screen">
         <div class="login-card">
-            <button type="button" class="admin-theme-toggle" aria-label="Toggle theme" title="Toggle theme">☾</button>
             <div class="login-logo">VAIYN</div>
             <p class="login-sub">Admin Control Panel</p>
             <form id="login-form" class="login-form">
@@ -71,7 +69,6 @@
     <!-- ============ RECOVERY: REQUEST CODE ============ -->
     <div class="login-screen hidden" id="recovery-request-screen">
         <div class="login-card">
-            <button type="button" class="admin-theme-toggle" aria-label="Toggle theme" title="Toggle theme">☾</button>
             <div class="login-logo">VAIYN</div>
             <p class="login-sub">Password Recovery</p>
             <p class="login-hint" style="margin:0 0 24px;">Enter the email you used at setup. We'll send a 6-digit verification code.</p>
@@ -91,7 +88,6 @@
     <!-- ============ RECOVERY: VERIFY & RESET ============ -->
     <div class="login-screen hidden" id="recovery-verify-screen">
         <div class="login-card">
-            <button type="button" class="admin-theme-toggle" aria-label="Toggle theme" title="Toggle theme">☾</button>
             <div class="login-logo">VAIYN</div>
             <p class="login-sub">Reset Password</p>
             <p class="login-hint" id="recovery-sent-info" style="margin:0 0 24px;">Check your inbox. The code expires in 15 minutes.</p>
@@ -155,7 +151,6 @@
                     <button type="button" id="logout-btn">Logout</button>
                 </div>
                 <a href="/" class="sb-store-link" target="_blank">View store ↗</a>
-                <button type="button" class="admin-theme-toggle sb-theme-toggle" aria-label="Toggle theme" title="Toggle theme">☾</button>
             </div>
         </aside>
 
@@ -688,37 +683,7 @@
             </form>
         </div>
     </div>
-
-    <script>
-    /* Admin theme toggle — shares vaiyn_theme key with storefront */
-    (function(){
-        var KEY='vaiyn_theme';
-        function current(){return document.documentElement.getAttribute('data-theme')||'light';}
-        function set(t){document.documentElement.setAttribute('data-theme',t);try{localStorage.setItem(KEY,t);}catch(e){}paintBtns(t);}
-        function paintBtns(t){
-            var icon=t==='dark'?'☀':'☾';
-            var label=t==='dark'?'Switch to light theme':'Switch to dark theme';
-            document.querySelectorAll('.admin-theme-toggle').forEach(function(b){
-                b.textContent=icon;
-                b.setAttribute('aria-label',label);
-                b.setAttribute('title',label);
-            });
-        }
-        document.addEventListener('click',function(e){
-            var b=e.target.closest('.admin-theme-toggle');
-            if(!b)return;
-            e.preventDefault();
-            set(current()==='dark'?'light':'dark');
-        });
-        paintBtns(current());
-        if(window.matchMedia){
-            matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(e){
-                if(!localStorage.getItem(KEY))set(e.matches?'dark':'light');
-            });
-        }
-    })();
-    </script>
-    <script src="admin.js"></script>
+<script src="admin.js"></script>
     <!-- jsPDF for invoice PDF export -->
     <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js" defer></script>
     <script src="admin-finance.js" defer></script>

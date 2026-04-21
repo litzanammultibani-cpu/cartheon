@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/0.9">
+
+    <!-- Home -->
+    <url>
+        <loc>https://vaiyn.com/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://vaiyn.com/og-image.svg</image:loc>
+            <image:title>VAIYN — Fine Silver Jewelry</image:title>
+        </image:image>
+    </url>
+
+    <!-- Product pages (deep-linked via ?id=) -->
+    <url><loc>https://vaiyn.com/product.html?id=celeste-chain</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+    <url><loc>https://vaiyn.com/product.html?id=infiniti-cuff</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+    <url><loc>https://vaiyn.com/product.html?id=aurora-bangle</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+    <url><loc>https://vaiyn.com/product.html?id=etoile-charm</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+    <url><loc>https://vaiyn.com/product.html?id=lune-tennis</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+    <url><loc>https://vaiyn.com/product.html?id=mira-paperclip</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+    <url><loc>https://vaiyn.com/product.html?id=solis-beaded</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+    <url><loc>https://vaiyn.com/product.html?id=sienna-heart</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+
+    <!-- Info pages -->
+    <url><loc>https://vaiyn.com/contact.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+    <url><loc>https://vaiyn.com/shipping.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+    <url><loc>https://vaiyn.com/returns.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+
+    <!-- Legal -->
+    <url><loc>https://vaiyn.com/legal.html</loc><priority>0.4</priority><changefreq>yearly</changefreq></url>
+    <url><loc>https://vaiyn.com/privacy.html</loc><priority>0.4</priority><changefreq>yearly</changefreq></url>
+    <url><loc>https://vaiyn.com/terms.html</loc><priority>0.4</priority><changefreq>yearly</changefreq></url>
+    <url><loc>https://vaiyn.com/cookies.html</loc><priority>0.3</priority><changefreq>yearly</changefreq></url>
+
+</urlset>
